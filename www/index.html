@@ -38,7 +38,15 @@
             </div>
 
             <div data-role="content" role="main">
-              <p>Welcome to Baby Letter</p>
+              
+                <div data-role="navbar" class="navbar-top">
+                    <ul>
+                        <li><a href="#" data-role="button" data-mini="true" data-inline="true">Get Started</a></li>
+                        <li></li>
+                        <li><a href="#" data-role="button" data-mini="true" data-inline="true">Photos</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
@@ -48,14 +56,6 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             console.log("init");
-            // app.initialize();
-
-            $.ajax("https://api.github.com/legacy/repos/search/javascript").done(function(data) {
-                 var i, repo;
-                 $.each(data.repositories, function (i, repo) {
-                    $("#allRepos").append("<p><a href='https://github.com/" + repo.username + "/" + repo.name + "'>" + repo.name + "</a><br>"+ repo.description + "&g\lt;/p>");
-                 });
-            });
         </script>
     </body>
 </html>

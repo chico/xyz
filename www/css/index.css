@@ -23,3 +23,28 @@ span.ui-btn-text {
 .ui-icon-flat-menu {
     background-color: transparent;
 }
+
+.navbar-top {
+
+}
+
+.navbar-top ul li:first-child, .navbar-top ul li:last-child {
+    width: 10%;
+}
+
+.navbar-top ul li:first-child a {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.navbar-top ul li:last-child a {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.navbar-top ul li:nth-child(2) {
+    width: 80%;
+    height: 37px;
+    background-color: rgb(242, 242, 242);
+}
+
