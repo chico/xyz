@@ -39,6 +39,7 @@ span.ui-btn-text {
 .navbar-top ul li:first-child a {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
+    text-align: left;
 }
 
 .navbar-top ul li:last-child a {
