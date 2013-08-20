@@ -9,6 +9,10 @@ span.ui-btn-text {
     box-shadow: none;
 }
 
+.ui-btn-up-g {
+    font-weight: normal;
+}
+
 .ui-header > .ui-btn {
     border: none;
     box-shadow: none;
