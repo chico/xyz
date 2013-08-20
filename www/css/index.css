@@ -53,3 +53,6 @@ span.ui-btn-text {
     background-color: rgb(242, 242, 242);
 }
 
+.ui-footer {
+    min-height: 40px;
+}
