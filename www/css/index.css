@@ -57,3 +57,8 @@ span.ui-btn-text {
 .ui-footer {
     min-height: 40px;
 }
+
+/* See http://view.jquerymobile.com/master/demos/widgets/transitions/ */
+.ui-page {
+    -webkit-backface-visibility: hidden;
+}
