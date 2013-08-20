@@ -33,7 +33,7 @@ span.ui-btn-text {
 }
 
 .navbar-top ul li:first-child, .navbar-top ul li:last-child {
-    width: 40%;
+    width: 45%;
 }
 
 .navbar-top ul li:first-child a {
@@ -48,7 +48,7 @@ span.ui-btn-text {
 }
 
 .navbar-top ul li:nth-child(2) {
-    width: 20%;
+    width: 10%;
     height: 36px;
     background-color: rgb(242, 242, 242);
 }
