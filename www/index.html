@@ -27,6 +27,8 @@
 
         <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
 
+        <!-- <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> -->
+
         <link rel="stylesheet" type="text/css" href="css/flat/jquery.mobile.flatui.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>XYZ</title>
@@ -35,53 +37,109 @@
         <div data-role="page">
             <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
 
-            <!-- <div data-role="header">
-              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a> 
+            <div data-role="header">
+              <!-- <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a> -->
               <h1>Baby Letter</h1>
-              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
-            </div> -->
-
-            <div data-role="content" role="main" style="min-height: inherit; background: url(img/bg3_385x385.jpg)">
-              
-                <!--<div style="width:100%; text-align:left; margin-top: 5px; margin-left: 5px;">
-                    <img src="img/logo_white_trans_1.png"/>
-                </div>-->
-
+              <!-- <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a> -->
             </div>
 
-            <div class="fixed-bottom" style="background-color: rgba(255, 255, 255, 0.85); border-top: 1px solid #cecece;">
-
-                <div style="margin: 18px 30px 7px 30px;">
-
-                    <div data-role="fieldcontain" style="padding: 0; border: none;">
-                        <p><b>Hi there</b>, enter your email to get started.</p>
-                    </div>
-
-                    <form action="setup.html" method="get" data-transition="slide" rel="external">
-                        <div data-role="fieldcontain" style="border: none;">
-                            <input type="text" name="email" id="email" value="" placeholder="yourname@example.com"/>
-                        </div>
-
-                        <div data-role="fieldcontain">
-                            <button data-theme="g">Get Started</button>
-                        </div>
-                    </form>
-
+            <div data-role="content" role="main">
+              
+                <div data-role="navbar" class="navbar-top">
+                    <ul>
+                        <li><a href="#" data-role="button" data-mini="true" data-inline="true">&nbsp;</a></li>
+                        <li></li>
+                        <li><a href="photos.html" data-transition="slide" data-role="button" data-mini="true" data-inline="true">Next Step: Photos &#8594;</a></li>
+                    </ul>
                 </div>
 
+                <div data-role="fieldcontain">
+                    <p><b>Directions:</b> Add your baby's name and date of birth to complete this step.</p>
+                </div>
+
+                <form action="photos.html" method="get" data-transition="slide" rel="external">
+                    <div data-role="fieldcontain">
+                        <label for="name">My baby's name is:</label>
+                        <input type="text" name="name" id="name" value="" />
+                    
+                        <label for="dob">They were born on:</label>
+                        <input type="date" name="dob" id="dob" value="" data-options='{"mode": "calbox"}'/>
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <button data-theme="g">Save and Continue</button>
+                    </div>
+                </form>
+
             </div>
 
-            <!-- <div data-role="footer" data-position="fixed"></div> -->
+            <div data-role="footer" data-position="fixed">
+              
+            </div>
         </div>
 
-        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
+
+        <script type="text/javascript" src="js/modernizr-2.5.3.js"></script>
+        <script type="text/javascript" src="js/yepnope.js"></script>
+
+        <!--
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+        <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+        -->
 
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             console.log("init");
         </script>
 
+        <script type="text/javascript">
+            yepnope({
+                test: Modernizr.inputtypes.date && Modernizr.inputtypes.time,
+                nope: ['css/jqm-datebox.min.css',
+                    'js/jquery.mousewheel.js',
+                    'js/jqm-datebox.core.js',
+                    'js/jqm-datebox.mode.calbox.js',
+                    'js/jqm-datebox.mode.datebox.js',
+                    'js/jquery.mobile.datebox.i18n.en_US.utf8.js'],
+                complete: function(url, result, key) {
+                    
+                    if (!Modernizr.inputtypes.date) {
+                        // polyfill the date inputs
+                        $( document ).on( "pagecreate create", function( e ){
+                            $( "input[type='date']", e.target ).each(function() {
+                                if ( typeof($(this).data('datebox')) === "undefined" ) {
+                                    $(this).datebox();
+                                }
+                            });
+                        });
+                        $("input[type='date']").each(function() {
+                            if (typeof($(this).data('datebox')) === "undefined") {
+                                $(this).datebox();
+                            }
+                        });
+                    }
+                
+                    if (!Modernizr.inputtypes.time) {
+                        // polyfill the time inputs
+                        $( document ).on( "pagecreate create", function( e ){
+                            $( "input[type='time']", e.target ).each(function() {
+                                if ( typeof($(this).data('datebox')) === "undefined" ) {
+                                    $(this).datebox();
+                                }
+                            });
+                        });
+                        $("input[type='time']").each(function() {
+                            if (typeof($(this).data('datebox')) === "undefined") {
+                                $(this).datebox();
+                            }
+                        });
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
