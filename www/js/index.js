@@ -1,6 +1,5 @@
 
-$('#setupPage').live('pageshow', function(event) {    
-    alert("pageshow");
+$('#setupPage').live('pageshow', function(event) {
     initDatePicker();
 });
 
