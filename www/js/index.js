@@ -8,6 +8,7 @@ function initDatePicker() {
     yepnope({
         test: Modernizr.inputtypes.date && Modernizr.inputtypes.time,
         nope: [
+            'css/jqm-datebox.min.css',
             'js/jquery.mousewheel.js',
             'js/jqm-datebox.core.js',
             'js/jqm-datebox.mode.calbox.js',
