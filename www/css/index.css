@@ -82,3 +82,62 @@ span.ui-btn-text {
     position: fixed;
     /*z-index: 1000;*/
 }
+
+.image-upload {
+    vertical-align: top;
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px auto;
+    border: solid 1px #c3c3c3;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-size: 75px 75px;
+    background-color: #e0e0e0;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+    background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+                      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+                      transparent 75%, transparent);
+}
+
+/* image upload */
+
+.image-upload.empty {
+    border: dashed 1px #c3c3c3;
+    background-color: #EBEBEB;
+    cursor: default;
+}
+
+.image-upload i {
+    margin-top: 40px;
+}
+
+.image-upload img {
+    margin-top: 40px;
+}
+
+.image-upload .btn {
+  padding: 6px 6px 4px 6px;
+  background: #222;
+  background: rgba(0,0,0,0.65);
+  color: #fff !important;
+  font-family: 'pragmatica',arial,sans-serif !important;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  text-shadow: none;
+  margin: 10px auto;
+  width: 57px;
+  border-radius: 4px;
+}
+
+.image-upload:hover .btn {
+  background: rgba(0,0,0,0.85);
+}

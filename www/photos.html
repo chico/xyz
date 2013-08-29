@@ -19,14 +19,6 @@
 -->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
-
-        <link rel="stylesheet" type="text/css" href="css/flat/jquery.mobile.flatui.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>XYZ</title>
     </head>
     <body>
         <div data-role="page">
@@ -49,11 +41,15 @@
                 </div>
 
                 <div data-role="fieldcontain">
-                    <p><b>Directions:</b> Choose one or more photos to complete this step.</p>
+                    <p><b>Directions:</b> Choose one or more recent and best baby photos to complete this step.</p>
                 </div>
 
-                <div data-role="fieldcontain">
-                    
+                <div data-role="fieldcontain" style="text-align: center; width: 100%;">
+                    <div class="image-upload">
+                      <!-- <i class="icon-camera-retro icon"></i> -->
+                      <img src="img/camera_retro.png" />
+                      <div class="btn">upload</div>
+                    </div>
                 </div>
 
                 <div data-role="fieldcontain">
@@ -66,14 +62,5 @@
               
             </div>
         </div>
-
-        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
-
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            console.log("init");
-        </script>
     </body>
 </html>
