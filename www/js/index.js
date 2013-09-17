@@ -1,13 +1,9 @@
 
-console.log("init");
-
 $('#photoPage').live('pageshow', function(event) {
-    console.log("trigger initCamera");
     initCamera();
 });
 
 $('#setupPage').live('pageshow', function(event) {
-    console.log("trigger initDatePicker");
     initDatePicker();
 });
 
@@ -60,11 +56,12 @@ function initDatePicker() {
 
 function initCamera() {
 
-    console.log("initCamera");
-    alert("initCamera");
-
     var onSuccess = function(uri) {
-        alert(uri);
+        // alert(uri);
+        $('#image-upload img').css({
+            'background-image': 'url('+uri+')',
+            'background-size':  '100%'
+        });
     };
 
     var onFail = function() {
@@ -72,18 +69,11 @@ function initCamera() {
     };
 
     $('.image-upload').bind('tap', function() {
-        console.log("upload");
-        alert("upload");
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 50,
             destinationType: navigator.camera.DestinationType.FILE_URI,
             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
         });
-    });
-
-    $('.image-upload btn').bind('click', function() {
-        console.log("btn click");
-        alert("btn click");
     });
 
 }

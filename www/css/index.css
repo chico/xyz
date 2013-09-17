@@ -141,3 +141,26 @@ span.ui-btn-text {
 .image-upload:hover .btn {
   background: rgba(0,0,0,0.85);
 }
+
+/* compose image */
+
+.editable-area h3, .editable-area h4 {
+  width: 100%;
+  text-align: center;
+}
+
+.editable-area img {
+  display: block;
+  padding: 0;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  width: 100%;
+  margin: 5px auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+

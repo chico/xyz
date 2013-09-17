@@ -21,7 +21,7 @@
     <head>
     </head>
     <body>
-        <div id="photoPage" data-role="page">
+        <div id="composePage" data-role="page">
             <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
 
             <div data-role="header">
@@ -34,25 +34,31 @@
               
                 <div data-role="navbar" class="navbar-top">
                     <ul>
-                        <li><a href="setup.html" data-role="button" data-transition="slide" data-direction="reverse" data-mini="true" data-inline="true">&#8592; Baby Info</a></li>
+                        <li><a href="photos.html" data-transition="slide" data-direction="reverse" data-role="button" data-mini="true" data-inline="true">&#8592; Photos</a></li>
                         <li></li>
-                        <li><a href="compose.html" data-role="button" data-transition="slide" data-mini="true" data-inline="true">Compose &#8594;</a></li>
+                        <li><a href="#" data-transition="slide" data-role="button" data-mini="true" data-inline="true">Finish &#8594;</a></li>
                     </ul>
                 </div>
 
                 <div data-role="fieldcontain">
-                    <p><b>Directions:</b> Choose one or more recent and best baby photos to complete this step.</p>
+                    <p><b>Directions:</b> Add family &amp; friends and compose your baby email to complete this step.</p>
                 </div>
 
-                <form action="compose.html" method="get" data-transition="slide" rel="external">
-                    <div data-role="fieldcontain" style="text-align: center; width: 100%;">
-                        <div class="image-upload">
-                          <!-- <i class="icon-camera-retro icon"></i> -->
-                          <img src="img/camera_retro.png" />
-                          <div class="btn">upload</div>
-                        </div>
+                <form action="photos.html" method="get" data-transition="slide" rel="external">
+                    <div data-role="fieldcontain">
+                        <a href="#" data-role="button" data-icon="flat-man" data-theme="b" data-inline="true">To...</a>
+                        <a href="#" data-role="button" data-icon="flat-new" data-theme="b" data-inline="true">Edit</a>
+                        <a href="#" data-role="button" data-icon="flat-mail" data-theme="b" data-inline="true">Preview</a>
                     </div>
-                
+
+                    <div class="editable-area" data-role="fieldcontain">
+                        <h3>Luca is 5 months old!</h3>
+
+                        <img src="https://dl.dropboxusercontent.com/u/21463137/luca.png" alt="" border="0" width="600" height="100%" style="padding:0;"></img>
+
+                        <h4>Lots of love,<br/>Mummy &amp; Daddy &amp; Luca</h4>
+                    </div>
+
                     <div data-role="fieldcontain">
                         <button data-theme="g">Save and Continue</button>
                     </div>
@@ -64,5 +70,9 @@
               
             </div>
         </div>
+
+        <script type="text/javascript">
+            
+        </script>
     </body>
 </html>
