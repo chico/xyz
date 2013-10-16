@@ -7,6 +7,10 @@ $('#setupPage').live('pageshow', function(event) {
     initDatePicker();
 });
 
+$('#mainPage').live('pageshow', function(event) {
+    initGallery();
+});
+
 function initDatePicker() {
     yepnope({
         test: Modernizr.inputtypes.date && Modernizr.inputtypes.time,
@@ -77,3 +81,23 @@ function initCamera() {
     });
 
 }
+
+function initGallery() {
+    alert('init gallery');
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) { 
+            var sdcard = fileSystem.root;
+            sdcard.getDirectory('dcim/Camera', {create: false}, function(dcim) {
+                alert(dcim);
+                // var gallery = $('#gallery');
+                // makeGallery(dcim, gallery);
+            }, function(error) {
+                alert("DIRERROR: " + error.code);
+            })
+        }, function(evt) { 
+            alert(evt.target.error.code);
+        });
+    }    
+}
+
+
+
