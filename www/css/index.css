@@ -13,10 +13,25 @@ span.ui-btn-text {
     font-weight: normal;
 }
 
+.ui-header {
+  height: 41px;
+}
+
 .ui-header > .ui-btn {
-    border: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
+  padding-top: 5px;  
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background: #3498db;
+}
+
+.ui-bar-a {
+  border: none;
+  background: #3498db;
+}
+
+.ui-body-c {
+  color: #FFF;
 }
 
 .ui-icon-shadow {
@@ -177,5 +192,28 @@ span.ui-btn-text {
   text-align: right;
 }
 
+/* arrow - see http://cssarrowplease.com */
+
+.arrow_box {
+  position: relative;
+  background: #2980b9;
+}
+.arrow_box:after {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(41, 128, 185, 0);
+  border-top-color: #2980b9;
+  border-width: 8px;
+  left: 50%;
+  margin-left: -8px;
+}
 
 
