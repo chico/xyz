@@ -302,6 +302,30 @@
 .ui-btn-up-g,.ui-btn-hover-g,.ui-btn-down-g{font-family:Lato,sans-serif;text-decoration:none}
 .ui-bar-g .ui-btn-up-a,.ui-bar-g .ui-btn-down-a,.ui-bar-g .ui-btn-hover-a{background-color:#2ecc71;border:1px solid #2ecc71}
 
+.ui-bar-h{border:1px solid #2980b9;background:#2980b9;color:#fff;font-weight:bold;font-family:Lato,sans-serif;}
+.ui-bar-h .ui-link-inherit{color:#3e3e3e}
+.ui-bar-h a.ui-link{color:#7cc4e7;font-weight:bold;}
+.ui-bar-h a.ui-link:visited{color:#2489ce}
+.ui-bar-h a.ui-link:hover{color:#2489ce}
+.ui-bar-h a.ui-link:active{color:#2489ce}
+.ui-bar-h input,.ui-bar-h select,.ui-bar-h textarea,.ui-bar-h button{font-family:Lato,sans-serif}
+.ui-body-h,.ui-overlay-h{border:2px solid #2980b9;color:#34495e;background:#fff;background-image:none}
+.ui-body-h{font-family:Lato,sans-serif;}
+.ui-body-h input,.ui-body-h select,.ui-body-h textarea,.ui-body-h button{font-family:Lato,sans-serif}
+.ui-body-h .ui-link-inherit{color:#333}
+.ui-body-h .ui-link{color:#2980b9;font-weight:bold;}
+.ui-body-h .ui-link:visited,.ui-body-h .ui-link:hover,.ui-body-h .ui-link:active{color:#3498db}
+.ui-body-h.ui-input-text{border:2px solid #eee;}
+.ui-body-h.ui-input-text.ui-focus{border:2px solid #3498db;-webkit-transition:border linear .2s;-moz-transition:border linear .2s;-o-transition:border linear .2s;transition:border linear .2s}
+.ui-btn-up-h{border:1px solid #2980b9;background:#2980b9;font-weight:bold;color:#fff;}
+.ui-btn-up-h:visited,.ui-btn-up-h a.ui-link-inherit{color:#fff}
+.ui-btn-hover-h{border:1px solid #3498db;background:#3498db;font-weight:bold;color:#fff;}
+.ui-btn-hover-h:visited,.ui-btn-hover-h:hover,.ui-btn-hover-h a.ui-link-inherit{color:#fff}
+.ui-btn-down-h{border:1px solid #3498db;background:#3498db;font-weight:bold;color:#fff;}
+.ui-btn-down-h:visited,.ui-btn-down-h:hover,.ui-btn-down-h a.ui-link-inherit{color:#fff}
+.ui-btn-up-h,.ui-btn-hover-h,.ui-btn-down-h{font-family:Lato,sans-serif;text-decoration:none}
+.ui-bar-h .ui-btn-up-a,.ui-bar-h .ui-btn-down-a,.ui-bar-h .ui-btn-hover-a{background-color:#2980b9;border:1px solid #2980b9}
+
 /* Active class used as the "on" state across all themes
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-active {
