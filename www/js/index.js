@@ -1,6 +1,8 @@
 
 $('#photoPage').live('pageshow', function(event) {
-    initCamera();
+    // initCamera();
+    alert('photoPage');
+    initGallery();
 });
 
 $('#setupPage').live('pageshow', function(event) {
