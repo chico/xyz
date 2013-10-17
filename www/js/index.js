@@ -1,8 +1,6 @@
 
 $('#photoPage').live('pageshow', function(event) {
-    // initCamera();
-    alert('photoPage');
-    initGallery();
+    initCamera();
 });
 
 $('#setupPage').live('pageshow', function(event) {
@@ -10,7 +8,7 @@ $('#setupPage').live('pageshow', function(event) {
 });
 
 $('#mainPage').live('pageshow', function(event) {
-    initGallery();
+    
 });
 
 function initDatePicker() {
@@ -84,22 +82,6 @@ function initCamera() {
 
 }
 
-function initGallery() {
-    alert('init gallery');
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) { 
-            var sdcard = fileSystem.root;
-            sdcard.getDirectory('dcim/Camera', {create: false}, function(dcim) {
-                alert(dcim);
-                // var gallery = $('#gallery');
-                // makeGallery(dcim, gallery);
-            }, function(error) {
-                alert("DIRERROR: " + error.code);
-            })
-        }, function(evt) { 
-            alert(evt.target.error.code);
-        });
-    }    
-}
 
 
 
