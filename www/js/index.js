@@ -87,7 +87,10 @@ function initCameraFromMain() {
 
     var onSuccess = function(uri) {
         // alert(uri);
-        $('#camera-img').src = uri;
+        var image = document.getElementById('camera-img');
+        image.src = uri;
+        alert('ok');
+
         // $('#image-upload img').css({
         //     'background-image': 'url('+uri+')',
         //     'background-size':  '100%'
