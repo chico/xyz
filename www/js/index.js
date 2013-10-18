@@ -8,7 +8,7 @@ $('#setupPage').live('pageshow', function(event) {
 });
 
 $('#mainPage').live('pageshow', function(event) {
-    
+    initCameraFromMain();
 });
 
 function initDatePicker() {
@@ -73,6 +73,31 @@ function initCamera() {
     };
 
     $('.image-upload').bind('tap', function() {
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 50,
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        });
+    });
+
+}
+
+function initCameraFromMain() {
+    alert("initCameraFromMain");
+
+    var onSuccess = function(uri) {
+        alert(uri);
+        // $('#image-upload img').css({
+        //     'background-image': 'url('+uri+')',
+        //     'background-size':  '100%'
+        // });
+    };
+
+    var onFail = function() {
+        console.log('Failed to get an image');
+    };
+
+    $('#btn-camera').bind('tap', function() {
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 50,
             destinationType: navigator.camera.DestinationType.FILE_URI,
