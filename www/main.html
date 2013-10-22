@@ -20,7 +20,7 @@
 <html>
     <head>
     </head>
-    <body style="background: #34495e;">
+    <body style="background: #ecf0f1;">
         <div id="mainPage" data-role="page">
             <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
 
@@ -34,17 +34,49 @@
               <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-settings" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn-right ui-btn ui-shadow ui-btn-up-a" style="right: 2px; height: 33px; width: 43px; border-left: 1px solid #FFF;"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-settings ui-icon-shadow">&nbsp;</span></span></a>
             </div>
 
-            <div data-role="content" role="main" style="background: #34495e; padding: 0; border-top: 3px solid #2c3e50;">
+            <div data-role="content" role="main" style="background: #fff; padding: 0; border-top: 5px solid #ecf0f1;">
               
-                <div data-role="fieldcontain" style="padding: 0 15px; border-bottom: 5px solid #2c3e50;">
-                    <p><b>Directions:</b> Start by uploading your first photo.</p>
+                <div id="main-0" style="display: none">
+                    <div data-role="fieldcontain" style="padding: 0 15px; color: #2980b9; border: none;">
+                        <p><b>Directions:</b> Start by uploading your first photo.</p>
+                    </div>
+
+                    <div data-role="fieldcontain" style="text-align: center; min-height: 466px; background: #ecf0f1;">
+                        <!-- <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="h" data-disabled="false" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-up-h" aria-disabled="false" style="background-color: #2980b9; margin-top: 25px; right: 7px; height: 30px; border: 1px solid #2980b9; opacity: 0.9;"><span class="ui-btn-inner" style="padding-top: 4px;"><span class="ui-btn-text" style="font-size: 12.5px;">Upload Your First Photo</span></span></div> -->                    
+                        <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 125px; width: 120px; height: 120px; border-radius: 4em; -webkit-border-radius: 4em; border: 3px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 72px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 51px; margin-left: 24px;">&nbsp;</span></span></a>
+                    </div>
                 </div>
 
-                <div data-role="fieldcontain" style="text-align: center; min-height: 466px; background: #2c3e50;">
-                    <!-- <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="h" data-disabled="false" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-up-h" aria-disabled="false" style="background-color: #2980b9; margin-top: 25px; right: 7px; height: 30px; border: 1px solid #2980b9; opacity: 0.9;"><span class="ui-btn-inner" style="padding-top: 4px;"><span class="ui-btn-text" style="font-size: 12.5px;">Upload Your First Photo</span></span></div> -->                    
-                    <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 125px; width: 120px; height: 120px; border-radius: 4em; -webkit-border-radius: 4em; border: 3px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 72px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 51px; margin-left: 24px;">&nbsp;</span></span></a>
-                    
-                    <img id="camera-img" src="" style="border: 1px solid #fff"></img>
+                <div id="main-1" style="display: block">
+                    <div data-role="fieldcontain" style="padding: 0 15px; color: #2980b9; border: none;">
+                        <p><b>Directions:</b> Add up to 5 photos &amp; click Done.</p>
+                    </div>
+
+                    <div data-role="fieldcontain" style="min-height: 380px; background: #ecf0f1; border: none; padding: .5em .3em;">
+                        <div style="margin: 10px 24px; background: #fff; box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); padding: 2px;">
+                            <img src="img/mainpage-bg.jpg" width="100%;" />
+                            <div style="height: 40px; background: #fff; padding: 2px;"></div>
+                        </div>
+                    </div>
+
+                    <div data-role="fieldcontain" style="min-height: 80px; padding: 0 15px; border: none; border-bottom: 5px solid #ecf0f1;">
+                        <div style="margin: 12px 5px 5px 15px; background: #fff; box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8); -moz-box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8); -webkit-box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8); padding: 1px; width: 55px; height: 55px; position: relative; float: left;">
+                            <img src="img/mainpage-bg.jpg" width="100%;" />
+                        </div>
+                        <div style="margin: 12px 5px; background: #fff; box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); padding: 1px; width: 55px; height: 55px; position: relative; float: left;">
+                            <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 7px; margin-left: 7px; width: 40px; height: 40px; border-radius: 30px; -webkit-border-radius: 30px; border: 1px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 30px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 10px; margin-left: 4px;">&nbsp;</span></span></a>
+                        </div>
+                        <div style="margin: 12px 5px; background: #fff; box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); padding: 1px; width: 55px; height: 55px; position: relative; float: left;">
+                            <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 7px; margin-left: 7px; width: 40px; height: 40px; border-radius: 30px; -webkit-border-radius: 30px; border: 1px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 30px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 10px; margin-left: 4px;">&nbsp;</span></span></a>
+                        </div>
+                        <div style="margin: 12px 5px; background: #fff; box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); padding: 1px; width: 55px; height: 55px; position: relative; float: left;">
+                            <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 7px; margin-left: 7px; width: 40px; height: 40px; border-radius: 30px; -webkit-border-radius: 30px; border: 1px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 30px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 10px; margin-left: 4px;">&nbsp;</span></span></a>
+                        </div>
+                        <div style="margin: 12px 5px; background: #fff; box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50); padding: 1px; width: 55px; height: 55px; position: relative; float: left;">
+                            <a id="btn-camera" href="#" data-role="button" data-icon="flat-camera" data-iconpos="notext" data-theme="h" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" title="Camera" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-notext ui-btn-up-h" style="margin-top: 7px; margin-left: 7px; width: 40px; height: 40px; border-radius: 30px; -webkit-border-radius: 30px; border: 1px solid #2980b9; background: #3498db;"><span class="ui-btn-inner" style="font-size: 30px;"><span class="ui-btn-text">Camera</span><span class="ui-icon ui-icon-flat-camera ui-icon-shadow" style="margin-top: 10px; margin-left: 4px;">&nbsp;</span></span></a>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

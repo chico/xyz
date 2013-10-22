@@ -83,18 +83,13 @@ function initCamera() {
 }
 
 function initCameraFromMain() {
-    alert("initCameraFromMain");
 
     var onSuccess = function(uri) {
-        // alert(uri);
-        var image = document.getElementById('camera-img');
-        image.src = uri;
-        alert('ok');
-
-        // $('#image-upload img').css({
-        //     'background-image': 'url('+uri+')',
-        //     'background-size':  '100%'
-        // });
+        // var image = document.getElementById('camera-img');
+        // image.src = uri;
+        
+        $('#main-0').hide();
+        $('#main-1').show();
     };
 
     var onFail = function() {
