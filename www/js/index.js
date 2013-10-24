@@ -87,12 +87,14 @@ function initCameraFromMain() {
     var imgIndex = "1";
 
     var onSuccess = function(uri) {
+        alert(imgIndex);
+
         var image = document.getElementById('main-img-' + imgIndex);
         image.src = uri;
 
-        var image = document.getElementById('main-img-thumb-' + imgIndex);
+        image = document.getElementById('main-img-thumb-' + imgIndex);
         image.src = uri;
-        
+
         if (imgIndex == "1") {
             $('#main-0').hide();
             $('#main-1').show();
@@ -108,7 +110,8 @@ function initCameraFromMain() {
 
 
     $('.btn-camera').each(function() {
-        imgIndex = $(this).data("img-index");        
+        imgIndex = $(this).data("img-index");
+        alert(imgIndex);
         $(this).bind('tap', function() {
             navigator.camera.getPicture(onSuccess, onFail, {
                 quality: 50,
