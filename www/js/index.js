@@ -85,8 +85,11 @@ function initCamera() {
 function initCameraFromMain() {
 
     var onSuccess = function(uri) {
-        // var image = document.getElementById('camera-img');
-        // image.src = uri;
+        var image = document.getElementById('main-1-img');
+        image.src = uri;
+
+        var image = document.getElementById('main-1-img-thumb');
+        image.src = uri;
         
         $('#main-0').hide();
         $('#main-1').show();
