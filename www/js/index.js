@@ -94,11 +94,15 @@ function initCameraFromMain() {
         image.src = uri;
 
         if (imgIndex == "1") {
+            alert("show main-1");
             $('#main-0').hide();
             $('#main-1').show();
         } else {
+            alert("hide #btn-camera-" + imgIndex);
             $('#btn-camera-' + imgIndex).hide();
+            alert("hide main-img-thumb-" + imgIndex);
             $('#main-img-thumb-' + imgIndex).show();
+            alert('done');
         }
     };
 
@@ -108,7 +112,6 @@ function initCameraFromMain() {
 
 
     $('.btn-camera').each(function() {
-        alert('photo please');
         var imgIndex = $(this).data("img-index");
         $(this).bind('tap', function() {
             navigator.camera.getPicture(
