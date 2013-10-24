@@ -84,9 +84,7 @@ function initCamera() {
 
 function initCameraFromMain() {
 
-    var imgIndex = "1";
-
-    var onSuccess = function(uri) {
+    var onSuccess = function(uri, imgIndex) {
         alert(imgIndex);
 
         var image = document.getElementById('main-img-' + imgIndex);
@@ -110,14 +108,20 @@ function initCameraFromMain() {
 
 
     $('.btn-camera').each(function() {
-        imgIndex = $(this).data("img-index");
-        alert(imgIndex);
+        alert('photo please');
+        var imgIndex = $(this).data("img-index");
         $(this).bind('tap', function() {
-            navigator.camera.getPicture(onSuccess, onFail, {
+            navigator.camera.getPicture(
+                function(uri) {
+                    onSuccess(uri, imgIndex)
+                },
+                onFail,
+                {
                 quality: 50,
                 destinationType: navigator.camera.DestinationType.FILE_URI,
                 sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-            });
+                }
+            );
         });
     });
 
