@@ -85,24 +85,20 @@ function initCamera() {
 function initCameraFromMain() {
 
     var onSuccess = function(uri, imgIndex) {
-        alert(imgIndex);
-
-        var image = document.getElementById('main-img-' + imgIndex);
-        image.src = uri;
+        if (imgIndex == "1") {
+            var image = document.getElementById('main-img-' + imgIndex);
+            image.src = uri;
+        }
 
         image = document.getElementById('main-img-thumb-' + imgIndex);
         image.src = uri;
 
         if (imgIndex == "1") {
-            alert("show main-1");
             $('#main-0').hide();
             $('#main-1').show();
         } else {
-            alert("hide #btn-camera-" + imgIndex);
             $('#btn-camera-' + imgIndex).hide();
-            alert("hide main-img-thumb-" + imgIndex);
             $('#main-img-thumb-' + imgIndex).show();
-            alert('done');
         }
     };
 
