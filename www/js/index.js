@@ -84,26 +84,37 @@ function initCamera() {
 
 function initCameraFromMain() {
 
+    var imgIndex = "1";
+
     var onSuccess = function(uri) {
-        var image = document.getElementById('main-1-img');
+        var image = document.getElementById('main-img-' + imgIndex);
         image.src = uri;
 
-        var image = document.getElementById('main-1-img-thumb');
+        var image = document.getElementById('main-img-thumb-' + imgIndex);
         image.src = uri;
         
-        $('#main-0').hide();
-        $('#main-1').show();
+        if (imgIndex == "1") {
+            $('#main-0').hide();
+            $('#main-1').show();
+        } else {
+            $('#btn-camera-' + imgIndex).hide();
+            $('#main-img-thumb-' + imgIndex).show();
+        }
     };
 
     var onFail = function() {
         console.log('Failed to get an image');
     };
 
-    $('#btn-camera').bind('tap', function() {
-        navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 50,
-            destinationType: navigator.camera.DestinationType.FILE_URI,
-            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+
+    $('.btn-camera').each(function() {
+        imgIndex = $(this).data("img-index");        
+        $(this).bind('tap', function() {
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 50,
+                destinationType: navigator.camera.DestinationType.FILE_URI,
+                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+            });
         });
     });
 
