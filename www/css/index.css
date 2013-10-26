@@ -216,4 +216,33 @@ span.ui-btn-text {
   margin-left: -8px;
 }
 
+/* main-img-thumb */
+
+.main-img-thumb {
+  position: relative;
+  float: left;
+  margin: 8px 5px;
+  background: #fff;  
+  padding: 1px;
+  width: 54px;
+  height: 54px;
+  box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(119, 119, 119, 0.50);
+}
+
+.main-img-thumb.active {
+  box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8);
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(52, 152, 219, 0.8);
+}
+
+.main-img-thumb:first-child {
+  margin: 8px 5px 5px 18px;
+}
+
+
+
+
+
 

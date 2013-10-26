@@ -84,10 +84,13 @@ function initCamera() {
 
 function initCameraFromMain() {
 
+    var replaceMainImage = function(src) {
+        document.getElementById('main-img-1').src = src;
+    }
+
     var onSuccess = function(uri, imgIndex) {
         if (imgIndex == "1") {
-            var image = document.getElementById('main-img-' + imgIndex);
-            image.src = uri;
+            replaceMainImage(uri);
         }
 
         image = document.getElementById('main-img-thumb-' + imgIndex);
@@ -96,9 +99,16 @@ function initCameraFromMain() {
         if (imgIndex == "1") {
             $('#main-0').hide();
             $('#main-1').show();
+            $('#btn-done').show();
         } else {
             $('#btn-camera-' + imgIndex).hide();
             $('#main-img-thumb-' + imgIndex).show();
+        }
+
+        $(image).parent().toggleClass("active");
+        $(image).bind('tap', function() {
+            $(this).parent().toggleClass("active");
+            replaceMainImage(this.src);
         }
     };
 
@@ -116,9 +126,9 @@ function initCameraFromMain() {
                 },
                 onFail,
                 {
-                quality: 50,
-                destinationType: navigator.camera.DestinationType.FILE_URI,
-                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+                    quality: 50,
+                    destinationType: navigator.camera.DestinationType.FILE_URI,
+                    sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
                 }
             );
         });
