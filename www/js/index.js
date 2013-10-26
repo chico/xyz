@@ -86,7 +86,7 @@ function initCameraFromMain() {
 
     var replaceMainImage = function(src) {
         document.getElementById('main-img-1').src = src;
-    }
+    };
 
     var onSuccess = function(uri, imgIndex) {
         if (imgIndex == "1") {
@@ -109,7 +109,7 @@ function initCameraFromMain() {
         $(image).bind('tap', function() {
             $(this).parent().toggleClass("active");
             replaceMainImage(this.src);
-        }
+        });
     };
 
     var onFail = function() {
