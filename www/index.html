@@ -68,20 +68,20 @@
                   <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
                 </div> -->
 
-                <div data-role="content" role="main" class="content" style="min-height: inherit; background: url(img/bg3_385x385.jpg)">
+                <div data-role="content" role="main" class="content" style="background: url(img/bg3_385x385.jpg)">
                   
                     <div class="getstarted">
 
-                        <div data-role="fieldcontain" style="padding: 0; border: none;">
-                            <p style="color: #2980b9;"><b>Hi there</b>, enter your email to get started.</p>
-                        </div>
-
                         <form action="main.html?v=4" method="get" data-transition="pop" rel="external">
+                            <div style="padding: 0; border: none;">
+                                <p style="color: #2980b9;"><b>Hi there</b>, enter your email to get started.</p>
+                            </div>
+                        
                             <div data-role="fieldcontain" style="border: none;">
                                 <input type="text" name="email" id="email" value="" placeholder="yourname@example.com"/>
                             </div>
 
-                            <div data-role="fieldcontain">
+                            <div>
                                 <button data-theme="h">Get Started!</button>
                             </div>
                         </form>
