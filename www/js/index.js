@@ -88,6 +88,11 @@ function initCameraFromMain() {
         document.getElementById('main-img-1').src = src;
     };
 
+    var makeThumbnailActive = function(img) {
+        $(img).parent().addClass("active").siblings().removeClass('active');
+        replaceMainImage($(img).attr('src'));
+    };
+
     var onSuccess = function(uri, imgIndex) {
         if (imgIndex == "1") {
             replaceMainImage(uri);
@@ -105,10 +110,9 @@ function initCameraFromMain() {
             $('#main-img-thumb-' + imgIndex).show();
         }
 
-        $(image).parent().toggleClass("active");
+        makeThumbnailActive(image);
         $(image).bind('tap', function() {
-            $(this).parent().toggleClass("active");
-            replaceMainImage(this.src);
+            makeThumbnailActive(this);
         });
     };
 
