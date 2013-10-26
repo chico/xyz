@@ -157,6 +157,20 @@ span.ui-btn-text {
   background: rgba(0,0,0,0.85);
 }
 
+/* index page */
+
+#indexPage .content {
+  padding: 0;
+  min-height: inherit;
+  background: url('img/bg3_385x385.jpg')
+}
+
+#indexPage .content .getstarted {
+  margin: 390px 0 7px 0;
+  padding: 10px 30px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
 /* compose image */
 
 .editable-area h3, .editable-area h4 {
