@@ -148,8 +148,6 @@ function initCameraFromMain() {
 
 function initContacts() {
 
-    alert('initContacts');
-
     var onSuccess = function(results) {
         alert(results.length + ' contacts found');
         for (var i=0; i<results.length; i++) {
@@ -159,16 +157,21 @@ function initContacts() {
                 photos: results[i].photos
             });            
         }
-        alert('contacts loaded!');
-        alert(contacts[0]);
-        alert('contacts loaded yup!');
+
+        alert(contacts[0].displayName);
+        if (contacts[0].emails.length > 0) {
+            alert(contacts[0].emails[0].value + " - " + contacts[0].emails[0].type);
+        }
+        if (contacts[0].photos.length > 0) {
+            alert(contacts[0].photos[0].value + " - " + contacts[0].photos[0].type);
+        }
+        alert('ok');
     }
 
     var onFail = function(error) {
         console.log('Failed to get contacts - ' + error);
     };
 
-    alert('contact build options');
     // specify contact search criteria
     var options = new ContactFindOptions();
     options.multiple=true;      // return multiple results
@@ -176,15 +179,12 @@ function initContacts() {
 
     var fields = ["displayName", "emails", "photos"];
 
-    alert('contact find');
     // find contacts
     navigator.contacts.find(
         fields,
         onSuccess,
         onFail,
         options);
-
-    alert('contact find done');
 
 }
 
