@@ -1,4 +1,6 @@
 
+var contacts = [];
+
 $('#photoPage').live('pageshow', function(event) {
     initCamera();
 });
@@ -151,11 +153,14 @@ function initContacts() {
     var onSuccess = function(contacts) {
         alert('contacts onSuccess');
         for (var i=0; i<contacts.length; i++) {
-            if (contacts[i].displayName) {  // many contacts don't have displayName
-                names.push(contacts[i].displayName);
-            }
+            contacts.push({
+                displayName: contacts[i].displayName,
+                emails: contacts[i].emails,
+                photos: contacts[i].photos
+            });            
         }
         alert('contacts loaded');
+        alert(contacts[0]);
     }
 
     var onFail = function(error) {
@@ -169,7 +174,7 @@ function initContacts() {
     // options.multiple=true;      // return multiple results
     // filter = ["displayName"];   // return contact.displayName field
 
-    var fields = ["displayName", "name"];
+    var fields = ["displayName", "emails", "photos"];
 
     alert('contact find');
     // find contacts
