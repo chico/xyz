@@ -158,16 +158,26 @@ function initContacts() {
         alert('contacts loaded');
     }
 
+    var onFail = function(error) {
+        alert('Failed to get contacts - ' + error);
+    };
+
     alert('contact build options');
     // specify contact search criteria
     var options = new ContactFindOptions();
     options.filter="";          // empty search string returns all contacts
-    options.multiple=true;      // return multiple results
-    filter = ["displayName"];   // return contact.displayName field
+    // options.multiple=true;      // return multiple results
+    // filter = ["displayName"];   // return contact.displayName field
+
+    var fields = ["displayName", "name"];
 
     alert('contact find');
     // find contacts
-    navigator.contacts.find(filter, onSuccess, onError, options);
+    navigator.contacts.find(
+        fields,
+        onSuccess,
+        onFail,
+        options);
 
     alert('contact find done');
 
