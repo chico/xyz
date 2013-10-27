@@ -29,9 +29,10 @@
     -->
     <preference name="permissions"                value="none"/>
 
+    <feature name="http://api.phonegap.com/1.0/contacts"/>
     <!-- <feature name="http://api.phonegap.com/1.0/file"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
-    <feature name="http://api.phonegap.com/1.0/contacts"/> -->
+     -->
 
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version"           value="2.9.0" />          <!-- all: current version of PhoneGap -->
