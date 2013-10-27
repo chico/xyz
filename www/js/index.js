@@ -151,7 +151,7 @@ function initContacts() {
     alert('initContacts');
 
     var onSuccess = function(contacts) {
-        alert('contacts onSuccess');
+        alert(contacts.length + ' contacts found');
         for (var i=0; i<contacts.length; i++) {
             contacts.push({
                 displayName: contacts[i].displayName,
@@ -159,12 +159,13 @@ function initContacts() {
                 photos: contacts[i].photos
             });            
         }
-        alert('contacts loaded');
+        alert('contacts loaded!');
         alert(contacts[0]);
+        alert('contacts loaded yup!');
     }
 
     var onFail = function(error) {
-        alert('Failed to get contacts - ' + error);
+        console.log('Failed to get contacts - ' + error);
     };
 
     alert('contact build options');
