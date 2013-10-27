@@ -149,7 +149,7 @@ function initCameraFromMain() {
 function initContacts() {
 
     var onSuccess = function(results) {
-        alert(results.length + ' contacts found');
+        // alert(results.length + ' contacts found');
         for (var i=0; i<results.length; i++) {
             contacts.push({
                 displayName: results[i].displayName,
@@ -157,15 +157,6 @@ function initContacts() {
                 photos: results[i].photos
             });            
         }
-
-        alert(contacts[0].displayName);
-        if (contacts[0].emails.length > 0) {
-            alert(contacts[0].emails[0].value + " - " + contacts[0].emails[0].type);
-        }
-        if (contacts[0].photos.length > 0) {
-            alert(contacts[0].photos[0].value + " - " + contacts[0].photos[0].type);
-        }
-        alert('ok');
     }
 
     var onFail = function(error) {
