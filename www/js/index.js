@@ -12,7 +12,7 @@ $('#mainPage').live('pageshow', function(event) {
 });
 
 $('#indexPage').live('pageshow', function(event) {
-    initContacts();
+    document.addEventListener("deviceready", initContacts, true);
 });
 
 function initDatePicker() {
@@ -148,7 +148,8 @@ function initContacts() {
 
     alert('initContacts');
 
-    function onSuccess(contacts) {
+    var onSuccess = function(contacts) {
+        alert('contacts onSuccess');
         for (var i=0; i<contacts.length; i++) {
             if (contacts[i].displayName) {  // many contacts don't have displayName
                 names.push(contacts[i].displayName);
@@ -157,14 +158,18 @@ function initContacts() {
         alert('contacts loaded');
     }
 
+    alert('contact build options');
     // specify contact search criteria
     var options = new ContactFindOptions();
     options.filter="";          // empty search string returns all contacts
     options.multiple=true;      // return multiple results
     filter = ["displayName"];   // return contact.displayName field
 
+    alert('contact find');
     // find contacts
     navigator.contacts.find(filter, onSuccess, onError, options);
+
+    alert('contact find done');
 
 }
 
