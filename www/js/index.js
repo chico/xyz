@@ -11,6 +11,10 @@ $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
 });
 
+$('#indexPage').live('pageshow', function(event) {
+    initContacts();
+});
+
 function initDatePicker() {
     yepnope({
         test: Modernizr.inputtypes.date && Modernizr.inputtypes.time,
@@ -137,6 +141,30 @@ function initCameraFromMain() {
             );
         });
     });
+
+}
+
+function initContacts() {
+
+    alert('initContacts');
+
+    function onSuccess(contacts) {
+        for (var i=0; i<contacts.length; i++) {
+            if (contacts[i].displayName) {  // many contacts don't have displayName
+                names.push(contacts[i].displayName);
+            }
+        }
+        alert('contacts loaded');
+    }
+
+    // specify contact search criteria
+    var options = new ContactFindOptions();
+    options.filter="";          // empty search string returns all contacts
+    options.multiple=true;      // return multiple results
+    filter = ["displayName"];   // return contact.displayName field
+
+    // find contacts
+    navigator.contacts.find(filter, onSuccess, onError, options);
 
 }
 
