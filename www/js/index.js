@@ -150,13 +150,13 @@ function initContacts() {
 
     alert('initContacts');
 
-    var onSuccess = function(contacts) {
-        alert(contacts.length + ' contacts found');
-        for (var i=0; i<contacts.length; i++) {
+    var onSuccess = function(results) {
+        alert(results.length + ' contacts found');
+        for (var i=0; i<results.length; i++) {
             contacts.push({
-                displayName: contacts[i].displayName,
-                emails: contacts[i].emails,
-                photos: contacts[i].photos
+                displayName: results[i].displayName,
+                emails: results[i].emails,
+                photos: results[i].photos
             });            
         }
         alert('contacts loaded!');
@@ -171,9 +171,8 @@ function initContacts() {
     alert('contact build options');
     // specify contact search criteria
     var options = new ContactFindOptions();
-    options.filter="";          // empty search string returns all contacts
-    // options.multiple=true;      // return multiple results
-    // filter = ["displayName"];   // return contact.displayName field
+    options.multiple=true;      // return multiple results
+    options.filter="";          // empty search string returns all contacts    
 
     var fields = ["displayName", "emails", "photos"];
 
