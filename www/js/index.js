@@ -164,7 +164,7 @@ function initContacts() {
                 }
             }
 
-            if (name && name.length > 0) {
+            if (name && name.trim().length > 0) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
@@ -220,12 +220,13 @@ function renderContact(name, email, top) {
 function displayContacts() {
 
     var count = 0;
-    for (var i = 0; i < contacts.length; i++) {        
-        for (var j = 0; j < contacts[i].emails.length; j++) {
-            renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
-            count++;
+    for (var i = 0; i < contacts.length; i++) {
+        if (contacts[i].emails) {
+            for (var j = 0; j < contacts[i].emails.length; j++) {
+                renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
+                count++;
+            }
         }
-        
     }
 
     count += 1; // one extra for default Me contact
