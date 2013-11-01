@@ -155,7 +155,7 @@ function initContacts() {
     var onSuccess = function(results) {
         // alert(results.length + ' contacts found');
         for (var i=0; i<results.length; i++) {
-            var name = "";
+            var name = null;
             if (results[i].displayName) {
                 name = results[i].displayName;
             } else if (results[i].name) {
@@ -164,12 +164,23 @@ function initContacts() {
                 }
             }
 
-            contacts.push({
-                name: name,
-                emails: results[i].emails,
-                photos: results[i].photos
-            });            
+            if (name) {
+                contacts.push({
+                    name: name,
+                    emails: results[i].emails,
+                    photos: results[i].photos
+                });
+            }
         }
+        contacts.sort(
+            function(a,b) {
+                if (a.name < b.name)
+                    return -1;
+                if (a.name > b.name)
+                    return 1;
+                return 0;
+            }
+        );
     }
 
     var onFail = function(error) {
@@ -192,30 +203,35 @@ function initContacts() {
 
 }
 
+function renderContact(name, email, top) {
+    var html = '';
+    if (top) {
+        html += '<div class="contact top-border">';
+    } else {
+        html += '<div class="contact">';
+    }
+    html += '<div>';
+    html += '<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-checkround" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-checkmark ui-icon-shadow" style="color: #7f8c8d;">&nbsp;</span></span></a>';
+    html += '</div><div><p>' + name + '</p><p>' + email + '</p></div></div>';
+
+    $('#contacts').append(html);
+}
+
 function displayContacts() {
 
-    var count = 0;
     for (var i = 0; i < contacts.length; i++) {
-
+        if (!contacts[i].emails || contacts[i].emails.length < 1) {
+            renderContact(contacts[i].name, "", (i == 0));
+            continue;
+        }
         for (var j = 0; j < contacts[i].emails.length; j++) {
-
-            var html = '';
-            if (i == 0) {
-                html += '<div class="contact top-border">';
-            } else {
-                html += '<div class="contact">';
-            }
-            html += '<div>';
-            html += '<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-checkround" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-checkmark ui-icon-shadow" style="color: #7f8c8d;">&nbsp;</span></span></a>';
-            html += '</div><div><p>' + contacts[i].name + '</p><p>' + contacts[i].emails[j].value + '</p></div></div>';
-
-            $('#contacts').append(html);
+            renderContact(contacts[i].name, contacts[i].emails[j].value, (i == 0));
             count++;
         }
         
     }
 
-    count++; // one extra for default Me contact
+    var count = contacts.length + 1; // one extra for default Me contact
     $('.contacts .heading').html('1 of ' + count + ' contacts');
 
 }
