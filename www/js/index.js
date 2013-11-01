@@ -155,8 +155,17 @@ function initContacts() {
     var onSuccess = function(results) {
         // alert(results.length + ' contacts found');
         for (var i=0; i<results.length; i++) {
+            var name = "";
+            if (results[i].displayName) {
+                name = results[i].displayName;
+            } else if (results[i].name) {
+                if (results[i].name.formatted) {
+                    name = results[i].name.formatted;
+                }
+            }
+
             contacts.push({
-                displayName: results[i].displayName,
+                name: name,
                 emails: results[i].emails,
                 photos: results[i].photos
             });            
@@ -188,7 +197,7 @@ function displayContacts() {
     var count = 0;
     for (var i = 0; i < contacts.length; i++) {
 
-        for (var j = 0; j < contacts[i].emails.length; j++) { 
+        for (var j = 0; j < contacts[i].emails.length; j++) {
 
             var html = '';
             if (i == 0) {
@@ -198,7 +207,7 @@ function displayContacts() {
             }
             html += '<div>';
             html += '<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-checkround" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-checkmark ui-icon-shadow" style="color: #7f8c8d;">&nbsp;</span></span></a>';
-            html += '</div><div><p>' + contacts[i].displayName + '</p><p>' + contacts[i].emails[j].value + '</p></div></div>';
+            html += '</div><div><p>' + contacts[i].name + '</p><p>' + contacts[i].emails[j].value + '</p></div></div>';
 
             $('#contacts').append(html);
             count++;

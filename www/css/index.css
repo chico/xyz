@@ -298,6 +298,7 @@ span.ui-btn-text {
   font-size: 13px;
   margin: 0;
   text-align: left;
+  overflow: hidden;
 }
 
 .contact div:nth-child(2) p:first-child {
