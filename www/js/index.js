@@ -1,6 +1,11 @@
 
 var contacts = [];
 
+var contactCount = 0;
+
+var selectedContacts = [];
+selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
+
 $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
 });
@@ -214,36 +219,104 @@ function initContacts() {
 
 }
 
-function renderContact(name, email, top) {
-    var html = '';
+function renderContact(el, name, email, top, active) {
+    var classAttrs = '';
     if (top) {
-        html += '<div class="contact top-border">';
-    } else {
-        html += '<div class="contact">';
+        classAttrs += ' top-border';
     }
+    if (active) {
+        classAttrs += ' active';
+    }    
+    var html = '';
+    html += '<div class="contact' + classAttrs + '" data-contact-name="' + name + '" data-contact-email="' + email + '">';
     html += '<div>';
-    html += '<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-checkround" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-checkmark ui-icon-shadow" style="color: #7f8c8d;">&nbsp;</span></span></a>';
+    html += '<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-checkround" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-checkmark ui-icon-shadow">&nbsp;</span></span></a>';
     html += '</div><div><p>' + name + '</p><p>' + email + '</p></div></div>';
 
-    $('#contacts').append(html);
+    $(el).append(html);
+}
+
+function toggleContact(name, email) {
+    $(".all-contacts .contact[data-contact-name='" + name + "'][data-contact-email='" + email + "']").toggleClass("active");
+}
+
+function findSelectedContact(name, email) {
+    var index = -1;
+    for (var i = 0; i < selectedContacts.length; i++) {
+        if (selectedContacts[i].name === name && selectedContacts[i].email === email) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+function addSelectedContact(name, email) {
+    if (findSelectedContact(name, email) < 0) {
+        selectedContacts.push({name: name, email: email});
+    }
+}
+
+function removeSelectedContact(name, email) {
+    var indexToRemove = findSelectedContact(name, email);
+    if (indexToRemove >= 0) {
+        selectedContacts.splice(indexToRemove, 1);
+    }
+}
+
+function renderSelectedContacts() {
+    $('.selected-contacts').html("");
+    for (var i = 0; i < selectedContacts.length; i++) {
+        renderContact('.selected-contacts', selectedContacts[i].name, selectedContacts[i].email, (i == 0), true);
+    }
+    $('.selected-contacts .contact').each(function() {
+        $(this).bind('tap', function() {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+                addSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
+            } else {
+                removeSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
+            }
+            toggleContact($(this).data('contact-name'), $(this).data('contact-email'));
+            renderSelectedContactsHeading();
+        });
+    });
+}
+
+function renderSelectedContactsHeading() {    
+    $('.heading:first-child').html(selectedContacts.length + ' of ' + contactCount + ' contacts');
 }
 
 function displayContacts() {
 
-    var count = 0;
+    renderSelectedContacts();
+
+    contactCount = 0;
     for (var i = 0; i < contacts.length; i++) {
         if (contacts[i].emails) {
             for (var j = 0; j < contacts[i].emails.length; j++) {
                 if (validateEmail(contacts[i].emails[j].value)) {
-                    renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
-                    count++;
+                    renderContact('.all-contacts', contacts[i].name, contacts[i].emails[j].value, (contactCount == 0), findSelectedContact(contacts[i].name, contacts[i].emails[j].value) >= 0);
+                    contactCount++;
                 }
             }
         }
     }
+    contactCount += 1; // one extra for default Me contact
+    renderSelectedContactsHeading();
 
-    count += 1; // one extra for default Me contact
-    $('.contacts .heading').html('1 of ' + count + ' contacts');
+    $('.all-contacts .contact').each(function() {
+        $(this).bind('tap', function() {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+                addSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
+            } else {
+                removeSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
+            }
+            renderSelectedContacts();
+            renderSelectedContactsHeading();
+        });
+    });
 
 }
 

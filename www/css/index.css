@@ -308,7 +308,15 @@ span.ui-btn-text {
   font-weight: bold;
 }
 
+.contact .ui-icon {
+  color: #ecf0f1;
+}
+
 .contact.active div:nth-child(2) p {
+  color: #2980b9;
+}
+
+.contact.active .ui-icon {
   color: #2980b9;
 }
 
