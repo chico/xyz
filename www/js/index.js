@@ -164,7 +164,7 @@ function initContacts() {
                 }
             }
 
-            if (name) {
+            if (name && name.length > 0) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
@@ -219,19 +219,16 @@ function renderContact(name, email, top) {
 
 function displayContacts() {
 
-    for (var i = 0; i < contacts.length; i++) {
-        if (!contacts[i].emails || contacts[i].emails.length < 1) {
-            renderContact(contacts[i].name, "", (i == 0));
-            continue;
-        }
+    var count = 0;
+    for (var i = 0; i < contacts.length; i++) {        
         for (var j = 0; j < contacts[i].emails.length; j++) {
-            renderContact(contacts[i].name, contacts[i].emails[j].value, (i == 0));
+            renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
             count++;
         }
         
     }
 
-    var count = contacts.length + 1; // one extra for default Me contact
+    count += 1; // one extra for default Me contact
     $('.contacts .heading').html('1 of ' + count + ' contacts');
 
 }
