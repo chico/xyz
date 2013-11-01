@@ -164,7 +164,8 @@ function initContacts() {
                 }
             }
 
-            if (name && name.trim().length > 0 && new RegExp("/^[a-z ,.'-]+$/i").test(name.trim())) {
+
+            if (name && name.trim().length > 0 && new RegExp("^[a-zA-Z ,.'-]+$").test(name.trim())) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
