@@ -221,8 +221,11 @@ function displayContacts() {
 
     var count = 0;
     for (var i = 0; i < contacts.length; i++) {
-        if (contacts[i].emails) {
+        if (contacts[i].name && contacts[i].name.trim().length > 0 && contacts[i].emails) {
             for (var j = 0; j < contacts[i].emails.length; j++) {
+                if (count === 0) {
+                    alert(contacts[i].name + " - " + contacts[i].emails[j].value);
+                }
                 renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
                 count++;
             }
