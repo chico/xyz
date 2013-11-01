@@ -235,7 +235,7 @@ span.ui-btn-text {
 .main-img-thumb {
   position: relative;
   float: left;
-  margin: 8px 5px;
+  margin: 5px 5px;
   background: #fff;  
   padding: 1px;
   width: 54px;
@@ -252,7 +252,7 @@ span.ui-btn-text {
 }
 
 .main-img-thumb:first-child {
-  margin: 8px 5px 5px 18px;
+  margin: 5px 5px 5px 18px;
 }
 
 /* contacts */
