@@ -150,6 +150,16 @@ function initCameraFromMain() {
 
 }
 
+function validateName(name) { 
+    var re = new RegExp("^[a-zA-Z ,.'-]+$");
+    return re.test(name);
+}
+
+function validateEmail(address) {
+    var pos = address.lastIndexOf("@");
+    return pos > 0 && (address.lastIndexOf(".") > pos) && (address.length - pos > 4);
+}
+
 function initContacts() {
 
     var onSuccess = function(results) {
@@ -165,7 +175,7 @@ function initContacts() {
             }
 
 
-            if (name && name.trim().length > 0 && new RegExp("^[a-zA-Z ,.'-]+$").test(name.trim())) {
+            if (name && name.trim().length > 0 && validateName(name.trim())) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
@@ -224,11 +234,10 @@ function displayContacts() {
     for (var i = 0; i < contacts.length; i++) {
         if (contacts[i].emails) {
             for (var j = 0; j < contacts[i].emails.length; j++) {
-                if (count < 5) {
-                    alert(contacts[i].name + " - " + contacts[i].emails[j].value);
+                if (validateEmail(contacts[i].emails[j].value)) {
+                    renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
+                    count++;
                 }
-                renderContact(contacts[i].name, contacts[i].emails[j].value, (count == 0));
-                count++;
             }
         }
     }
