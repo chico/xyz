@@ -155,9 +155,9 @@ function validateName(name) {
     return re.test(name);
 }
 
-function validateEmail(address) {
-    var pos = address.lastIndexOf("@");
-    return pos > 0 && (address.lastIndexOf(".") > pos) && (address.length - pos > 4);
+function validateEmail(email) {
+    var re = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$");
+    return re.test(email);
 }
 
 function initContacts() {
