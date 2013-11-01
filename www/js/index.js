@@ -164,7 +164,7 @@ function initContacts() {
                 }
             }
 
-            if (name && name.trim().length > 0) {
+            if (name && name.trim().length > 0 && new RegExp("/^[a-z ,.'-]+$/i").test(name.trim())) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
@@ -221,7 +221,7 @@ function displayContacts() {
 
     var count = 0;
     for (var i = 0; i < contacts.length; i++) {
-        if (contacts[i].name && contacts[i].name.trim().length > 0 && contacts[i].emails) {
+        if (contacts[i].emails) {
             for (var j = 0; j < contacts[i].emails.length; j++) {
                 if (count < 5) {
                     alert(contacts[i].name + " - " + contacts[i].emails[j].value);
