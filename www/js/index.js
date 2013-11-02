@@ -1,4 +1,6 @@
 
+var photos = ['https://dl.dropboxusercontent.com/u/21463137/luca.png'];
+
 var contacts = [];
 
 var selectedContacts = [];
@@ -14,6 +16,10 @@ $('#indexPage').live('pageshow', function(event) {
 
 $('#contactsPage').live('pageshow', function(event) {
     displayContacts();
+});
+
+$('#previewPage').live('pageshow', function(event) {
+    displayPreview();
 });
 
 $('#photoPage').live('pageshow', function(event) {
@@ -113,6 +119,8 @@ function initCameraFromMain() {
 
         image = document.getElementById('main-img-thumb-' + imgIndex);
         image.src = uri;
+
+        photos[imgIndex - 1] = uri;
 
         if (imgIndex == "1") {
             $('#main-0').hide();
@@ -352,6 +360,18 @@ function displayContacts() {
     renderContacts("A");
     renderSelectedContactsHeading();
 
+}
+
+function displayPreview() {
+    for(var i=0; i < photos.length; i++) {
+        if (photos[i]) {
+            var html = '';
+            html += '<div class="editable-area">';
+            html += '<img src="' + photos[i] + '" alt="" border="0" width="600" height="100%" style="padding:0;"></img>';
+            html += '</div>';
+            $('.preview-photos').append(html);
+        }
+    }
 }
 
 
