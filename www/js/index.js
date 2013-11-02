@@ -302,10 +302,10 @@ function displayContacts() {
         $(this).toggleClass("active");
         if ($(this).hasClass("active")) {
             $('.selected-contacts').show();
-            $('.add-contact .collapse div:first-child').removeClass("arrow_box_top").addClass("arrow_box");
-        } else {
-            $('.selected-contacts').hide();
             $('.add-contact .collapse div:first-child').removeClass("arrow_box").addClass("arrow_box_top");
+        } else {
+            $('.selected-contacts').hide();            
+            $('.add-contact .collapse div:first-child').removeClass("arrow_box_top").addClass("arrow_box");
         }
     });
 
