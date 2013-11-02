@@ -230,6 +230,28 @@ span.ui-btn-text {
   margin-left: -8px;
 }
 
+.arrow_box_top {
+  position: relative;
+  background: #2980b9;
+}
+.arrow_box_top:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box_top:after {
+  border-color: rgba(41, 128, 185, 0);
+  border-bottom-color: #2980b9;
+  border-width: 8px;
+  left: 50%;
+  margin-left: -8px;
+}
+
 /* main-img-thumb */
 
 .main-img-thumb {
@@ -259,11 +281,25 @@ span.ui-btn-text {
 
 .contacts .heading {
   color: #2980b9;
-  font-size: 10px;
+  font-size: 12px;
   margin: 5px;
   text-align: right;
   font-weight: bold;
   width: 98%;
+}
+
+.add-contact {
+  width:100%;
+  height: 45px;
+  background-color: #fff;
+  border-top: 1px solid #3498db;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.add-contact .heading {
+  width:100%;
+  font-size: 14px;
+  margin: 14px 0 0 0;
 }
 
 .contact {
@@ -277,12 +313,12 @@ span.ui-btn-text {
   border-top: 1px solid #3498db;
 }
 
-.contact div {
+.add-contact div, .contact div {
   position: relative;
   float: left;
 }
 
-.contact div:first-child {
+.add-contact div:first-child, .contact div:first-child {
   padding-top: 1px;
 }
 
@@ -308,6 +344,10 @@ span.ui-btn-text {
   font-weight: bold;
 }
 
+.add-contact.active .ui-icon {
+  color: #2980b9;
+}
+
 .contact .ui-icon {
   color: #ecf0f1;
 }
@@ -320,7 +360,22 @@ span.ui-btn-text {
   color: #2980b9;
 }
 
+.add-contact .collapse {
+  width: 320px;
+  height: 40px;
+}
 
+.add-contact .arrow_box_top {
+  width: 18px;
+  height: 0;
+  margin: 25px 10px 0 10px;
+}
+
+.add-contact .arrow_box {
+  width: 18px;
+  height: 0;
+  margin: 20px 10px 0 10px;
+}
 
 
 

@@ -266,7 +266,7 @@ function removeSelectedContact(name, email) {
 function renderSelectedContacts() {
     $('.selected-contacts').html("");
     for (var i = 0; i < selectedContacts.length; i++) {
-        renderContact('.selected-contacts', selectedContacts[i].name, selectedContacts[i].email, (i == 0), true);
+        renderContact('.selected-contacts', selectedContacts[i].name, selectedContacts[i].email, false, true);
     }
     $('.selected-contacts .contact').each(function() {
         $(this).on('tap', function(event) {
@@ -285,11 +285,29 @@ function renderSelectedContacts() {
     });
 }
 
-function renderSelectedContactsHeading() {    
-    $('.heading:first-child').html(selectedContacts.length + ' of ' + contactCount + ' contacts');
+function renderSelectedContactsHeading() {
+    var suffix = ' contacts selected';
+    if (selectedContacts.length == 1) {
+        suffix = ' contact selected';
+    }
+    $('.heading:first-child').html(selectedContacts.length + suffix);
 }
 
 function displayContacts() {
+
+    $('.add-contact .collapse').on('tap', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        $(this).toggleClass("active");
+        if ($(this).hasClass("active")) {
+            $('.selected-contacts').show();
+            $('.add-contact .collapse div:first-child').removeClass("arrow_box_top").addClass("arrow_box");
+        } else {
+            $('.selected-contacts').hide();
+            $('.add-contact .collapse div:first-child').removeClass("arrow_box").addClass("arrow_box_top");
+        }
+    });
 
     renderSelectedContacts();
 
