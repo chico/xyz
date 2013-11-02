@@ -180,7 +180,7 @@ function initContacts() {
             }
 
 
-            if (name && name.trim().length > 0 && validateName(name.trim())) {
+            if (name && name.trim().length > 0 && validateName(name.trim()) && name.substring(0, 1) == "A") {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
