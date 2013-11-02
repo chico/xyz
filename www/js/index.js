@@ -1,8 +1,6 @@
 
 var contacts = [];
 
-var contactCount = 0;
-
 var selectedContacts = [];
 selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
@@ -179,7 +177,7 @@ function initContacts() {
                 }
             }
 
-            if (name && name.trim().length > 0 && validateName(name.trim()) && name.substring(0, 1) == "A") {
+            if (name && name.trim().length > 0 && validateName(name.trim())) {
                 contacts.push({
                     name: name,
                     emails: results[i].emails,
@@ -293,37 +291,20 @@ function renderSelectedContactsHeading() {
     $('.heading:first-child').html(selectedContacts.length + suffix);
 }
 
-function displayContacts() {
-
-    $('.add-contact .collapse').on('tap', function(event) {
-        event.stopPropagation();
-        event.preventDefault();
-
-        $(this).toggleClass("active");
-        if ($(this).hasClass("active")) {
-            $('.selected-contacts').show();
-            $('.add-contact .collapse div:first-child').removeClass("arrow_box").addClass("arrow_box_top");
-        } else {
-            $('.selected-contacts').hide();            
-            $('.add-contact .collapse div:first-child').removeClass("arrow_box_top").addClass("arrow_box");
-        }
-    });
-
-    renderSelectedContacts();
-
-    contactCount = 0;
+function renderContacts(letter) {
+    $('.all-contacts').html("");
     for (var i = 0; i < contacts.length; i++) {
+        if (contacts[i].name.substring(0, 1).toUpperCase() != letter.toUpperCase()) {
+            continue;
+        }
         if (contacts[i].emails) {
             for (var j = 0; j < contacts[i].emails.length; j++) {
                 if (validateEmail(contacts[i].emails[j].value)) {
-                    renderContact('.all-contacts', contacts[i].name, contacts[i].emails[j].value, (contactCount == 0), findSelectedContact(contacts[i].name, contacts[i].emails[j].value) >= 0);
-                    contactCount++;
+                    renderContact('.all-contacts', contacts[i].name, contacts[i].emails[j].value, false, findSelectedContact(contacts[i].name, contacts[i].emails[j].value) >= 0);
                 }
             }
         }
     }
-    contactCount += 1; // one extra for default Me contact
-    renderSelectedContactsHeading();
 
     $('.all-contacts .contact').each(function() {
         $(this).on('tap', function(event) {
@@ -340,6 +321,36 @@ function displayContacts() {
             renderSelectedContactsHeading();
         });
     });
+}
+
+function displayContacts() {
+
+    $('.add-contact .collapse').on('tap', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        $(this).toggleClass("active");
+        if ($(this).hasClass("active")) {
+            $('.selected-contacts').show();
+            $('.add-contact .collapse div:first-child').removeClass("arrow_box").addClass("arrow_box_top");
+        } else {
+            $('.selected-contacts').hide();            
+            $('.add-contact .collapse div:first-child').removeClass("arrow_box_top").addClass("arrow_box");
+        }
+    });
+
+    $('.alphabet div').on('tap', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        $(this).addClass("active").siblings().removeClass('active');
+        renderContacts($(this).html());
+    });
+
+    renderSelectedContacts();
+
+    renderContacts("A");
+    renderSelectedContactsHeading();
 
 }
 
