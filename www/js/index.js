@@ -179,7 +179,6 @@ function initContacts() {
                 }
             }
 
-
             if (name && name.trim().length > 0 && validateName(name.trim()) && name.substring(0, 1) == "A") {
                 contacts.push({
                     name: name,
@@ -270,7 +269,10 @@ function renderSelectedContacts() {
         renderContact('.selected-contacts', selectedContacts[i].name, selectedContacts[i].email, (i == 0), true);
     }
     $('.selected-contacts .contact').each(function() {
-        $(this).bind('tap', function() {
+        $(this).on('tap', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+
             $(this).toggleClass("active");
             if ($(this).hasClass("active")) {
                 addSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
@@ -306,7 +308,10 @@ function displayContacts() {
     renderSelectedContactsHeading();
 
     $('.all-contacts .contact').each(function() {
-        $(this).bind('tap', function() {
+        $(this).on('tap', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+
             $(this).toggleClass("active");
             if ($(this).hasClass("active")) {
                 addSelectedContact($(this).data('contact-name'), $(this).data('contact-email'));
