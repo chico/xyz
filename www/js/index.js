@@ -1,5 +1,8 @@
 
-var photos = ['https://dl.dropboxusercontent.com/u/21463137/luca.png'];
+var photos = [
+    'https://dl.dropboxusercontent.com/u/21463137/luca.png',
+    'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg',
+    'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg'];
 
 var contacts = [];
 
@@ -365,10 +368,15 @@ function displayContacts() {
 function displayPreview() {
     for(var i=0; i < photos.length; i++) {
         if (photos[i]) {
+
             var html = '';
-            html += '<div class="editable-area">';
-            html += '<img src="' + photos[i] + '" alt="" border="0" width="600" height="100%" style="padding:0;"></img>';
-            html += '</div>';
+
+            if (i === 0) {
+                html += '<div class="photo full"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p>Best photo!</p></div>';
+            } else {
+                html += '<div class="photo"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p></p></div>';
+            }
+
             $('.preview-photos').append(html);
         }
     }

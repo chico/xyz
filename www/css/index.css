@@ -191,6 +191,46 @@ span.ui-btn-text {
   overflow: hidden;
 }
 
+/* preview-photos */
+
+.preview-photos div {
+  position: relative;
+  float: left;
+}
+
+.preview-photos .photo {
+  width: 48%;
+}
+
+.preview-photos .full {
+  width: 100%;
+}
+
+.preview-photos .photo:nth-child(3), .editable-area .photo:nth-child(5) {
+  float: right;
+}
+
+.preview-photos .photo p {
+  color: #222;
+  font-size: 14px;
+  margin: 10px 15px 10px 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.preview-photos .photo img {
+  display: block;
+  padding: 0;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  width: 100%;
+  margin: 5px auto;
+  height: auto;
+  overflow: hidden;
+}
+
 /* home */
 
 .email-row h4, .email-row h5 {
