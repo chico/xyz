@@ -2,6 +2,8 @@
 var photos = [
     'https://dl.dropboxusercontent.com/u/21463137/luca.png',
     'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg',
+    'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg',
+    'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg',
     'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg'];
 
 var contacts = [];

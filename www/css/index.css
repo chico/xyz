@@ -206,7 +206,7 @@ span.ui-btn-text {
   width: 100%;
 }
 
-.preview-photos .photo:nth-child(3), .editable-area .photo:nth-child(5) {
+.preview-photos .photo:nth-child(3), .preview-photos .photo:nth-child(5) {
   float: right;
 }
 
