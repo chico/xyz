@@ -11,7 +11,13 @@ var contacts = [];
 var selectedContacts = [];
 selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
+// temp flag
+var toggleMainFlag = false;
+
 $('#mainPage').live('pageshow', function(event) {
+    if (toggleMainFlag) {
+        toggleMain();
+    }
     initCameraFromMain();
 });
 
@@ -106,6 +112,12 @@ function initCamera() {
 
 }
 
+function toggleMain() {
+    toggleMainFlag = true;
+    $('#main-0').hide();
+    $('#main-1').show();
+}
+
 function initCameraFromMain() {
 
     var replaceMainImage = function(src) {
@@ -128,8 +140,7 @@ function initCameraFromMain() {
         photos[imgIndex - 1] = uri;
 
         if (imgIndex == "1") {
-            $('#main-0').hide();
-            $('#main-1').show();
+            toggleMain();
             $('#btn-done').show();
         } else {
             $('#btn-camera-' + imgIndex).hide();
