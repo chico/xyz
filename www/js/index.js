@@ -374,7 +374,7 @@ function displayPreview() {
             var html = '';
 
             if (i === 0) {
-                html += '<div class="photo full"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p>Best photo!</p></div>';
+                html += '<div class="photo full"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p></p></div>';
             } else {
                 html += '<div class="photo"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p></p></div>';
             }
