@@ -15,6 +15,10 @@ $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
 });
 
+$('#photoPage').live('pageshow', function(event) {
+    $('.caption-input').focus();
+});
+
 $('#indexPage').live('pageshow', function(event) {
     document.addEventListener("deviceready", initContacts, true);
 });

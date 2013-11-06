@@ -444,5 +444,27 @@ span.ui-btn-text {
   margin: 20px 10px 0 10px;
 }
 
+/* caption */
+
+.caption-input {
+  text-align: left !important;
+  font-size: 14px !important;
+  /*font-weight: bold !important;*/
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  resize: none !important;
+  width: 100% !important;
+  padding: 2px 0 !important;
+  max-height: 65px !important;
+  line-height: 1em !important;
+  letter-spacing: -0.05em !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  color: #111 !important;
+  overflow: hidden !important;
+}
+
 
 
