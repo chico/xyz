@@ -23,6 +23,10 @@ $('#photoPage').live('pageshow', function(event) {
         }, 0);
     });
 
+    $('#footer')
+        .toolbar('option', 'hideDuringFocus', 'textarea')
+        .toolbar('option', 'tapToggle', false);
+
 });
 
 $('#indexPage').live('pageshow', function(event) {
