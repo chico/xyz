@@ -52,8 +52,6 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <preference name="splash-screen-duration"     value="1000"/>            <!-- android: Duration that the splash screen remains visible; defaults to 5000 (ms). -->
 
-    <preference name="android-windowSoftInputMode" value="adjustPan" />
-
     <!-- Plugins can also be added here. -->
     <!--
         <gap:plugin name="Example" />
