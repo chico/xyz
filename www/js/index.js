@@ -17,15 +17,13 @@ $('#mainPage').live('pageshow', function(event) {
 
 $('#photoPage').live('pageshow', function(event) {
 
+    $("[data-role=footer]").fixedtoolbar({ hideDuringFocus: "input, select, textarea" });
+
     $(document).on('focus', 'input, textarea', function() {
         setTimeout(function() {
             window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
         }, 0);
     });
-
-    $('#footer')
-        .toolbar('option', 'hideDuringFocus', 'textarea')
-        .toolbar('option', 'tapToggle', false);
 
 });
 
