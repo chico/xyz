@@ -17,12 +17,6 @@ $('#mainPage').live('pageshow', function(event) {
 
 $('#photoPage').live('pageshow', function(event) {
 
-    plugins.SoftKeyBoard.show(function () {
-        // success
-    },function () {
-       // fail
-    });
-
 });
 
 $('#indexPage').live('pageshow', function(event) {
