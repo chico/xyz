@@ -17,7 +17,11 @@ $('#mainPage').live('pageshow', function(event) {
 
 $('#photoPage').live('pageshow', function(event) {
 
-    $("#photoPageFooter").fixedtoolbar({ updatePagePadding: false, hideDuringFocus: "input, select, textarea" });
+    plugins.SoftKeyBoard.show(function () {
+        // success
+    },function () {
+       // fail
+    });
 
 });
 
