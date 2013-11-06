@@ -57,7 +57,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-    <gap:plugin name="de.phonostar.softkeyboard" />
+    <gap:plugin name="de.phonostar.softkeyboard" version="0.1" />
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
