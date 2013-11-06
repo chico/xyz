@@ -17,25 +17,10 @@ $('#mainPage').live('pageshow', function(event) {
 
 $('#photoPage').live('pageshow', function(event) {
 
-    $(window).bind('load', function () {
-        $.mobile.activePage.css({
-            height       : (window.innerHeight + 100) + 'px',
-            'min-height' : (window.innerHeight + 100) + 'px'
-        }).find('[data-role="footer"]').css({
-            bottom : '100px'
-        });
-        $.mobile.silentScroll(0);
-        setTimeout(function () {
-            $.mobile.activePage.css({
-                height       : '100%',
-                'min-height' : '100%'
-            }).find('[data-role="footer"]').css({
-                bottom : '0px'
-            });
-            // if ($.mobile.activePage[0].id in myScroll) {
-            //     myScroll[$.mobile.activePage[0].id].refresh();
-            // }
-        }, 750);
+    $(document).on('focus', 'input, textarea', function() {
+        setTimeout(function() {
+            window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
+        }, 0);
     });
 
 });
