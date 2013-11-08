@@ -36,10 +36,7 @@ $('#mainPage').live('pageshow', function(event) {
     $(window).on("resize", function() {
         if (captionInputFocus) {
             captionInputFocus = false;
-            $("#main-img-1").show();
-            $(".remove-img").show();
-            $(this).parent().css("height", "30px");
-            $(this).css("width", "200px");
+            $(".caption-input").blur();
         }
     });
     
