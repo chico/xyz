@@ -26,6 +26,9 @@ $('#mainPage').live('pageshow', function(event) {
                 initMainPageImage(photos[i].photo, i+1);
             }
         }
+        makeThumbnailActive(1);
+    } else {
+        $('#main-0').show();
     }
     initCameraFromMain();
     initImageCaption();    
@@ -137,7 +140,8 @@ var replaceMainImage = function(src) {
     document.getElementById('main-img-1').src = src;
 };
 
-var makeThumbnailActive = function(img, imgIndex) {
+var makeThumbnailActive = function(imgIndex) {
+    var image = document.getElementById('main-img-thumb-' + imgIndex);
     $(img).parent().addClass("active").siblings().removeClass('active');
     replaceMainImage($(img).attr('src'));
     $(".caption-input").data("index", imgIndex);
@@ -162,9 +166,9 @@ function initMainPageImage(uri, imgIndex) {
         $('#main-img-thumb-' + imgIndex).show();
     }
 
-    makeThumbnailActive(image, imgIndex);
+    makeThumbnailActive(imgIndex);
     $(image).bind('tap', function() {
-        makeThumbnailActive(this, parseInt($(this).data("index"), 10));
+        makeThumbnailActive(parseInt($(this).data("index"), 10));
     });
 }
 
