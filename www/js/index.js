@@ -44,11 +44,7 @@ $('#mainPage').live('pageshow', function(event) {
       $('.save-btn').hide();
       $('.done-btn').show();
 
-      alert('saving caption');
-      alert(parseInt($(this).data("index"), 10) - 1);
-      alert($(this).val());      
       photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
-      alert(photos[parseInt($(this).data("index"), 10) - 1].caption);
     });
 
     $('.edit-img-btn').on("tap", function(){
