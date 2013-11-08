@@ -1,10 +1,11 @@
 
 var photos = [
-    'https://dl.dropboxusercontent.com/u/21463137/luca.png',
-    'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg',
-    'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg',
-    'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg',
-    'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg'];
+    {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
+    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
+    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''}
+];
 
 var contacts = [];
 
@@ -18,7 +19,7 @@ $('#mainPage').live('pageshow', function(event) {
 
     $(".caption-input").focus( function() {
         $("#main-img-1").hide();
-        $(".remove-img").hide();
+        $(".img-actions").hide();
         $(this).parent().css("height", "115px");
         $(this).css("width", "100%");
         $(this).css("max-height", "115px");
@@ -35,13 +36,19 @@ $('#mainPage').live('pageshow', function(event) {
     $(".caption-input").blur( function() {
       captionInputFocus = false;
       $("#main-img-1").show();
-      $(".remove-img").show();
+      $(".img-actions").show();
       $(this).parent().css("height", "30px");
-      $(this).css("width", "250px");
+      $(this).css("width", "220px");
       $(this).css("max-height", "25px");
       $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
       $('.save-btn').hide();
       $('.done-btn').show();
+
+      photos[($this).data("index") - 1].caption = $(this).val();
+    });
+
+    $('.edit-img-btn').on("tap", function(){
+        $(".caption-input").focus();
     });
 
     $(window).on("resize", function() {
@@ -159,9 +166,11 @@ function initCameraFromMain() {
         document.getElementById('main-img-1').src = src;
     };
 
-    var makeThumbnailActive = function(img) {
+    var makeThumbnailActive = function(img, imgIndex) {
         $(img).parent().addClass("active").siblings().removeClass('active');
         replaceMainImage($(img).attr('src'));
+        $(".caption-input").data("index", imgIndex);
+        $(".caption-input").val(photos[imgIndex - 1].caption);
     };
 
     var onSuccess = function(uri, imgIndex) {
@@ -171,8 +180,9 @@ function initCameraFromMain() {
 
         image = document.getElementById('main-img-thumb-' + imgIndex);
         image.src = uri;
+        $(image).data("index", imgIndex);
 
-        photos[imgIndex - 1] = uri;
+        photos[imgIndex - 1].photo = uri;
 
         if (imgIndex == "1") {
             toggleMain();            
@@ -183,7 +193,7 @@ function initCameraFromMain() {
 
         makeThumbnailActive(image);
         $(image).bind('tap', function() {
-            makeThumbnailActive(this);
+            makeThumbnailActive(this, $(image).data("index"));
         });
     };
 
