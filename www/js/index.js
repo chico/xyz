@@ -200,7 +200,7 @@ function initCameraFromMain() {
         $(image).bind('tap', function() {
             alert('tap');
             alert($(this).data("index"));
-            alert(parseInt(($this).data("index"), 10));
+            alert(parseInt($(this).data("index"), 10));
             makeThumbnailActive(this, parseInt($(this).data("index"), 10));
         });
     };
