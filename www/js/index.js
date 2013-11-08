@@ -1,11 +1,12 @@
 
-var photos = [
-    {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
-    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
-    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
-    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
-    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''}
-];
+var photos = [];
+// var photos = [
+//     {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
+//     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+//     {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
+//     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+//     {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''}
+// ];
 
 var contacts = [];
 
