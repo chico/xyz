@@ -168,6 +168,7 @@ function initCameraFromMain() {
     };
 
     var makeThumbnailActive = function(img, imgIndex) {
+        alert('makeThumbnailActive');
         $(img).parent().addClass("active").siblings().removeClass('active');
         replaceMainImage($(img).attr('src'));
         alert('index = ' + imgIndex);
@@ -198,6 +199,8 @@ function initCameraFromMain() {
         makeThumbnailActive(image, imgIndex);
         $(image).bind('tap', function() {
             alert('tap');
+            alert(($this).data("index"));
+            alert(parseInt(($this).data("index"), 10));
             makeThumbnailActive(this, parseInt(($this).data("index"), 10));
         });
     };
