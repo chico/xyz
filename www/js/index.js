@@ -44,8 +44,8 @@ $('#mainPage').live('pageshow', function(event) {
       $('.save-btn').hide();
       $('.done-btn').show();
 
-      alert('saving caption to ' + parseInt(($this).data("index"), 10) - 1);
-      photos[parseInt(($this).data("index"), 10) - 1].caption = $(this).val();
+      alert('saving caption to ' + parseInt($(this).data("index"), 10) - 1);
+      photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
     });
 
     $('.edit-img-btn').on("tap", function(){
@@ -199,9 +199,9 @@ function initCameraFromMain() {
         makeThumbnailActive(image, imgIndex);
         $(image).bind('tap', function() {
             alert('tap');
-            alert(($this).data("index"));
+            alert($(this).data("index"));
             alert(parseInt(($this).data("index"), 10));
-            makeThumbnailActive(this, parseInt(($this).data("index"), 10));
+            makeThumbnailActive(this, parseInt($(this).data("index"), 10));
         });
     };
 
