@@ -22,12 +22,13 @@ $('#mainPage').live('pageshow', function(event) {
 
       setTimeout(
         $(window).on("resize", function() {
-          $("#main-img-1").show();
-          $(".remove-img").show();
-          $(this).parent().css("height", "30px");
-          $(this).css("width", "200px");
+            alert('resize triggered');
+            $("#main-img-1").show();
+            $(".remove-img").show();
+            $(this).parent().css("height", "30px");
+            $(this).css("width", "200px");
         })
-      , 300);
+      , 1000);
     });
 
     $(".caption-input").blur( function() {
