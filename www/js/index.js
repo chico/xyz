@@ -170,8 +170,11 @@ function initCameraFromMain() {
     var makeThumbnailActive = function(img, imgIndex) {
         $(img).parent().addClass("active").siblings().removeClass('active');
         replaceMainImage($(img).attr('src'));
+        alert('index = ' + imgIndex);
         $(".caption-input").data("index", imgIndex);
+        alert('caption = ' + photos[imgIndex - 1].caption);
         $(".caption-input").val(photos[imgIndex - 1].caption);
+        alert('ok');
     };
 
     var onSuccess = function(uri, imgIndex) {
@@ -192,8 +195,9 @@ function initCameraFromMain() {
             $('#main-img-thumb-' + imgIndex).show();
         }
 
-        makeThumbnailActive(image);
+        makeThumbnailActive(image, imgIndex);
         $(image).bind('tap', function() {
+            alert('tap');
             makeThumbnailActive(this, parseInt(($this).data("index"), 10));
         });
     };
