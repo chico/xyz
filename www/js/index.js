@@ -1,5 +1,5 @@
 
-var photos = [];
+var photos = [5];
 // var photos = [
 //     {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
 //     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
