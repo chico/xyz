@@ -44,7 +44,8 @@ $('#mainPage').live('pageshow', function(event) {
       $('.save-btn').hide();
       $('.done-btn').show();
 
-      photos[($this).data("index") - 1].caption = $(this).val();
+      alert('saving caption to ' + parseInt(($this).data("index"), 10) - 1);
+      photos[parseInt(($this).data("index"), 10) - 1].caption = $(this).val();
     });
 
     $('.edit-img-btn').on("tap", function(){
@@ -179,7 +180,7 @@ function initCameraFromMain() {
         }
 
         image = document.getElementById('main-img-thumb-' + imgIndex);
-        image.src = uri;
+        image.src = uri;        
         $(image).data("index", imgIndex);
 
         photos[imgIndex - 1].photo = uri;
@@ -193,7 +194,7 @@ function initCameraFromMain() {
 
         makeThumbnailActive(image);
         $(image).bind('tap', function() {
-            makeThumbnailActive(this, $(image).data("index"));
+            makeThumbnailActive(this, parseInt(($this).data("index"), 10));
         });
     };
 
