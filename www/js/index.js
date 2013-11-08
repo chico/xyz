@@ -14,7 +14,16 @@ selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
 var captionInputFocus = false;
 
+var showPhotosInMainPage = false;
+
 $('#mainPage').live('pageshow', function(event) {
+    if (showPhotosInMainPage) {
+        for(var i=0; i < photos.length; i++) {
+            if (photos[i] && photos[i].photo) {
+                initMainPageImage(photos[i].photo, i+1);
+            }
+        }
+    }
     initCameraFromMain();
     initImageCaption();    
 });
@@ -115,9 +124,34 @@ function initCamera() {
 }
 
 function toggleMain() {
+    showPhotosInMainPage = true;
     $('#main-0').hide();
     $('#main-1').show();
     $('#btn-done').show();
+}
+
+function initMainPageImage(uri, imgIndex) {
+    if (imgIndex == "1") {
+        replaceMainImage(uri);
+    }
+
+    image = document.getElementById('main-img-thumb-' + imgIndex);
+    image.src = uri;        
+    $(image).data("index", imgIndex);
+
+    photos[imgIndex - 1].photo = uri;
+
+    if (imgIndex == "1") {
+        toggleMain();            
+    } else {
+        $('#btn-camera-' + imgIndex).hide();
+        $('#main-img-thumb-' + imgIndex).show();
+    }
+
+    makeThumbnailActive(image, imgIndex);
+    $(image).bind('tap', function() {
+        makeThumbnailActive(this, parseInt($(this).data("index"), 10));
+    });
 }
 
 function initCameraFromMain() {
@@ -134,27 +168,7 @@ function initCameraFromMain() {
     };
 
     var onSuccess = function(uri, imgIndex) {
-        if (imgIndex == "1") {
-            replaceMainImage(uri);
-        }
-
-        image = document.getElementById('main-img-thumb-' + imgIndex);
-        image.src = uri;        
-        $(image).data("index", imgIndex);
-
-        photos[imgIndex - 1].photo = uri;
-
-        if (imgIndex == "1") {
-            toggleMain();            
-        } else {
-            $('#btn-camera-' + imgIndex).hide();
-            $('#main-img-thumb-' + imgIndex).show();
-        }
-
-        makeThumbnailActive(image, imgIndex);
-        $(image).bind('tap', function() {
-            makeThumbnailActive(this, parseInt($(this).data("index"), 10));
-        });
+        initMainPageImage(uri, imgIndex);        
     };
 
     var onFail = function() {
@@ -429,7 +443,7 @@ function displayContacts() {
 
 function displayPreview() {
     for(var i=0; i < photos.length; i++) {
-        if (photos[i]) {
+        if (photos[i] && photos[i].photo) {
 
             var html = '';
 
