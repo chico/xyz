@@ -13,6 +13,20 @@ selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
 $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
+
+    $(".caption-input").focus( function() {
+      $("#main-img-1").hide();
+      $(".remove-img").hide();
+      $(this).parent().css("height", "105px");
+      $(this).css("width", "100%");
+    });
+
+    $(".caption-input").blur( function() {
+      $("#main-img-1").show();
+      $(".remove-img").show();
+      $(this).parent().css("height", "30px");
+      $(this).css("width", "200px");
+    });
 });
 
 $('#photoPage').live('pageshow', function(event) {

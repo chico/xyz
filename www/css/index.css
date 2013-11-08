@@ -454,7 +454,7 @@ span.ui-btn-text {
   border: none !important;
   outline: none !important;
   resize: none !important;
-  width: 100% !important;
+  width: 100%;
   padding: 2px 0 !important;
   max-height: 80px !important;
   line-height: 1em !important;
