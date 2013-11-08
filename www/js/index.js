@@ -47,11 +47,12 @@ $('#mainPage').live('pageshow', function(event) {
         photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
     });
 
-    $('.edit-img-btn').on("tap", function(event){
-        event.stopPropagation();
-        event.preventDefault();
-        $(".caption-input").focus();
-    });
+    // TODO Why does this not work properly - focus and then blurs for some reason?
+    // $('.edit-img-btn').on("tap", function(event){
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     $(".caption-input").focus();
+    // });
 
     $(window).on("resize", function() {
         if (captionInputFocus) {
