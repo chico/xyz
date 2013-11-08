@@ -26,7 +26,7 @@ $('#mainPage').live('pageshow', function(event) {
                 initMainPageImage(photos[i].photo, i+1);
             }
         }
-        makeThumbnailActive(1);
+        // makeThumbnailActive(1);
     } else {
         $('#main-0').show();
     }
