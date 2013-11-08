@@ -27,6 +27,13 @@ $('#mainPage').live('pageshow', function(event) {
       $(this).parent().css("height", "30px");
       $(this).css("width", "200px");
     });
+
+    $(window).on("resize", function() {
+      $("#main-img-1").show();
+      $(".remove-img").show();
+      $(this).parent().css("height", "30px");
+      $(this).css("width", "200px");
+    });
 });
 
 $('#photoPage').live('pageshow', function(event) {
