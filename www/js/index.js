@@ -130,12 +130,23 @@ function toggleMain() {
     $('#btn-done').show();
 }
 
+var replaceMainImage = function(src) {
+    document.getElementById('main-img-1').src = src;
+};
+
+var makeThumbnailActive = function(img, imgIndex) {
+    $(img).parent().addClass("active").siblings().removeClass('active');
+    replaceMainImage($(img).attr('src'));
+    $(".caption-input").data("index", imgIndex);
+    $(".caption-input").val(photos[imgIndex - 1].caption);
+};
+
 function initMainPageImage(uri, imgIndex) {
     if (imgIndex == "1") {
         replaceMainImage(uri);
     }
 
-    image = document.getElementById('main-img-thumb-' + imgIndex);
+    var image = document.getElementById('main-img-thumb-' + imgIndex);
     image.src = uri;        
     $(image).data("index", imgIndex);
 
@@ -155,17 +166,6 @@ function initMainPageImage(uri, imgIndex) {
 }
 
 function initCameraFromMain() {
-
-    var replaceMainImage = function(src) {
-        document.getElementById('main-img-1').src = src;
-    };
-
-    var makeThumbnailActive = function(img, imgIndex) {
-        $(img).parent().addClass("active").siblings().removeClass('active');
-        replaceMainImage($(img).attr('src'));
-        $(".caption-input").data("index", imgIndex);
-        $(".caption-input").val(photos[imgIndex - 1].caption);
-    };
 
     var onSuccess = function(uri, imgIndex) {
         initMainPageImage(uri, imgIndex);        
