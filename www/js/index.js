@@ -44,8 +44,11 @@ $('#mainPage').live('pageshow', function(event) {
       $('.save-btn').hide();
       $('.done-btn').show();
 
-      alert('saving caption to ' + parseInt($(this).data("index"), 10) - 1);
+      alert('saving caption');
+      alert(parseInt($(this).data("index"), 10) - 1);
+      alert($(this).val());      
       photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
+      alert(photos[parseInt($(this).data("index"), 10) - 1].caption);
     });
 
     $('.edit-img-btn').on("tap", function(){
@@ -168,14 +171,10 @@ function initCameraFromMain() {
     };
 
     var makeThumbnailActive = function(img, imgIndex) {
-        alert('makeThumbnailActive');
         $(img).parent().addClass("active").siblings().removeClass('active');
         replaceMainImage($(img).attr('src'));
-        alert('index = ' + imgIndex);
         $(".caption-input").data("index", imgIndex);
-        alert('caption = ' + photos[imgIndex - 1].caption);
         $(".caption-input").val(photos[imgIndex - 1].caption);
-        alert('ok');
     };
 
     var onSuccess = function(uri, imgIndex) {
@@ -198,9 +197,6 @@ function initCameraFromMain() {
 
         makeThumbnailActive(image, imgIndex);
         $(image).bind('tap', function() {
-            alert('tap');
-            alert($(this).data("index"));
-            alert(parseInt($(this).data("index"), 10));
             makeThumbnailActive(this, parseInt($(this).data("index"), 10));
         });
     };
