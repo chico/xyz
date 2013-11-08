@@ -35,7 +35,7 @@
 
             <div data-role="content" role="main" style="background: #fff; padding: 0; border-top: 5px solid #ecf0f1;">
               
-                <div id="main-0" style="display: none">
+                <div id="main-0" style="display: block">
                     <div data-role="fieldcontain" style="padding: 0 15px; color: #2980b9; border: none;">
                         <p style="margin: 10px 0; padding: 0;"><b>Directions:</b> Start by uploading your first photo.</p>
                     </div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <div id="main-1" style="display: block">
+                <div id="main-1" style="display: none">
                     <div data-role="fieldcontain" style="padding: 0 15px; color: #2980b9; border: none;">
                         <p style="margin: 10px 0; padding: 0;"><b>Directions:</b> <span class="directions-text">Add up to 5 photos &amp; click Done.</span></p>
                     </div>
@@ -57,7 +57,7 @@
                             <div style="height: 30px; background: #fff; padding: 1px 0 1px 2px;">
                                 <!-- <p style="color: #7f8c8d; margin: 5px; position: relative; float: left; width: 200px; overflow: hidden;">Add caption</p> -->
 
-                                <textarea class="caption-input" maxlength="250" rows="5" spellcheck="false" placeholder="Add caption" style="color: #7f8c8d; position: relative; float: left; width: 200px; overflow: hidden;"></textarea>
+                                <textarea class="caption-input" maxlength="250" rows="5" spellcheck="false" placeholder="Add caption" style="color: #7f8c8d; position: relative; float: left; width: 250px; max-height: 25px; overflow: hidden;"></textarea>
 
                                 <div class="remove-img" style="position: relative; float: right; padding-top: 1px;">
                                     <!--<a data-iconpos="notext" href="#" data-role="button" data-icon="flat-new" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" title="" class="ui-btn-right ui-btn ui-shadow ui-btn-up-a" style="height: 28px; width: 45px; border: none; border-left: 1px solid #ecf0f1; background-color: #fff; float: left;"><span class="ui-btn-inner" style="padding: 5px;"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-flat-new ui-icon-shadow" style="color: #7f8c8d;">&nbsp;</span></span></a>-->
@@ -94,7 +94,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="footer" style="height: 45px; border-top: 3px solid #2980b9;">
-              <a href="contacts.html?v=4" id="btn-done" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="h" data-disabled="false" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-up-h done-btn" aria-disabled="false" style="background-color: #2980b9; margin-top: 3px; right: 7px; height: 30px; border: 1px solid #2980b9; display: block;"><span class="ui-btn-inner"><span class="ui-btn-text">Done</span></span></a>
+              <a href="contacts.html?v=4" id="btn-done" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="h" data-disabled="false" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-up-h done-btn" aria-disabled="false" style="background-color: #2980b9; margin-top: 3px; right: 7px; height: 30px; border: 1px solid #2980b9; display: none;"><span class="ui-btn-inner"><span class="ui-btn-text">Done</span></span></a>
               <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="h" data-disabled="false" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-up-h save-btn" aria-disabled="false" style="background-color: #2980b9; margin-top: 3px; right: 7px; height: 30px; border: 1px solid #2980b9; display: none;"><span class="ui-btn-inner"><span class="ui-btn-text">Save</span></span></div>
             </div>
         </div>

@@ -19,8 +19,9 @@ $('#mainPage').live('pageshow', function(event) {
     $(".caption-input").focus( function() {
         $("#main-img-1").hide();
         $(".remove-img").hide();
-        $(this).parent().css("height", "110px");
+        $(this).parent().css("height", "115px");
         $(this).css("width", "100%");
+        $(this).css("max-height", "115px");
         $("#main-1 .directions-text").html("Add caption &amp; click Save.");
         $('.done-btn').hide();
         $('.save-btn').show();
@@ -36,7 +37,8 @@ $('#mainPage').live('pageshow', function(event) {
       $("#main-img-1").show();
       $(".remove-img").show();
       $(this).parent().css("height", "30px");
-      $(this).css("width", "200px");
+      $(this).css("width", "250px");
+      $(this).css("max-height", "25px");
       $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
       $('.save-btn').hide();
       $('.done-btn').show();

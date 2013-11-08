@@ -447,23 +447,25 @@ span.ui-btn-text {
 /* caption */
 
 .caption-input {
-  text-align: left !important;
-  font-size: 14px !important;
+  text-align: left;
+  font-size: 14px;
   /*font-weight: bold !important;*/
   background: none !important;
   border: none !important;
   outline: none !important;
   resize: none !important;
   width: 100%;
-  padding: 2px 0 !important;
-  max-height: 80px !important;
+  padding: 2px 0;
+  max-height: 100px;
   line-height: 1em !important;
   letter-spacing: -0.05em !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
-  color: #111 !important;
+  color: #7f8c8d;
   overflow: hidden !important;
+  o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 
 
