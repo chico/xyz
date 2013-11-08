@@ -11,6 +11,8 @@ var contacts = [];
 var selectedContacts = [];
 selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
+var captionInputFocus = false;
+
 $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
 
@@ -20,22 +22,25 @@ $('#mainPage').live('pageshow', function(event) {
       $(this).parent().css("height", "105px");
       $(this).css("width", "100%");
 
-      setTimeout(
-        $(window).on("resize", function() {
-            alert('resize triggered');
-            $("#main-img-1").show();
-            $(".remove-img").show();
-            $(this).parent().css("height", "30px");
-            $(this).css("width", "200px");
-        })
-      , 1000);
+      setTimeout(function() {captionInputFocus=true}, 1000);
     });
 
     $(".caption-input").blur( function() {
+      captionInputFocus = false;
       $("#main-img-1").show();
       $(".remove-img").show();
       $(this).parent().css("height", "30px");
       $(this).css("width", "200px");
+    });
+
+    $(window).on("resize", function() {
+        if (captionInputFocus) {
+            captionInputFocus = false;
+            $("#main-img-1").show();
+            $(".remove-img").show();
+            $(this).parent().css("height", "30px");
+            $(this).css("width", "200px");
+        }
     });
     
 });
