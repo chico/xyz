@@ -1,6 +1,12 @@
 
 // init array to have 5 elements (hackish I know)
-var photos = [{}, {}, {}, {}, {}];
+var photos = [
+    {photo:undefined, caption:''},
+    {photo:undefined, caption:''},
+    {photo:undefined, caption:''},
+    {photo:undefined, caption:''},
+    {photo:undefined, caption:''}
+];
 
 // var photos = [
 //     {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
@@ -26,7 +32,7 @@ $('#mainPage').live('pageshow', function(event) {
                 initMainPageImage(photos[i].photo, i+1);
             }
         }
-        // makeThumbnailActive(1);
+        makeThumbnailActive(1);
     } else {
         $('#main-0').show();
     }
