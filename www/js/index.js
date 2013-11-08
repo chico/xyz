@@ -12,6 +12,7 @@ var contacts = [];
 var selectedContacts = [];
 selectedContacts.push({name: 'Me', email: 'chico.charlesworth@gmail.com'});
 
+var focusing = false;
 var captionInputFocus = false;
 
 $('#mainPage').live('pageshow', function(event) {
@@ -31,23 +32,29 @@ $('#mainPage').live('pageshow', function(event) {
         });
 
         setTimeout(function() {captionInputFocus=true}, 1000);
+
+        focusing = false;
     });
 
     $(".caption-input").blur( function() {
-      captionInputFocus = false;
-      $("#main-img-1").show();
-      $(".img-actions").show();
-      $(this).parent().css("height", "30px");
-      $(this).css("width", "220px");
-      $(this).css("max-height", "25px");
-      $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
-      $('.save-btn').hide();
-      $('.done-btn').show();
+        if (focusing) {
+            return;
+        }
+        captionInputFocus = false;
+        $("#main-img-1").show();
+        $(".img-actions").show();
+        $(this).parent().css("height", "30px");
+        $(this).css("width", "220px");
+        $(this).css("max-height", "25px");
+        $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
+        $('.save-btn').hide();
+        $('.done-btn').show();
 
-      photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
+        photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
     });
 
     $('.edit-img-btn').on("tap", function(){
+        focusing = true;
         $(".caption-input").focus();
     });
 
