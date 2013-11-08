@@ -16,50 +16,7 @@ var captionInputFocus = false;
 
 $('#mainPage').live('pageshow', function(event) {
     initCameraFromMain();
-
-    $(".caption-input").focus( function() {
-        $("#main-img-1").hide();
-        $(".img-actions").hide();
-        $(this).parent().css("height", "115px");
-        $(this).css("width", "100%");
-        $(this).css("max-height", "115px");
-        $("#main-1 .directions-text").html("Add caption &amp; click Save.");
-        $('.done-btn').hide();
-        $('.save-btn').show();
-        $('.save-btn').on('tap', function() {
-            $(".caption-input").blur();
-        });
-
-        setTimeout(function() {captionInputFocus=true}, 1000);
-    });
-
-    $(".caption-input").blur( function() {
-        captionInputFocus = false;
-        $("#main-img-1").show();
-        $(".img-actions").show();
-        $(this).parent().css("height", "30px");
-        $(this).css("width", "220px");
-        $(this).css("max-height", "25px");
-        $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
-        $('.save-btn').hide();
-        $('.done-btn').show();
-
-        photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
-    });
-
-    // TODO Why does this not work properly - focus and then blurs for some reason?
-    // $('.edit-img-btn').on("tap", function(event){
-    //     event.stopPropagation();
-    //     event.preventDefault();
-    //     $(".caption-input").focus();
-    // });
-
-    $(window).on("resize", function() {
-        if (captionInputFocus) {
-            $(".caption-input").blur();
-        }
-    });
-    
+    initImageCaption();    
 });
 
 $('#photoPage').live('pageshow', function(event) {
@@ -222,6 +179,51 @@ function initCameraFromMain() {
         });
     });
 
+}
+
+function initImageCaption() {
+    $(".caption-input").focus( function() {
+        $("#main-img-1").hide();
+        $(".img-actions").hide();
+        $(this).parent().css("height", "115px");
+        $(this).css("width", "100%");
+        $(this).css("max-height", "115px");
+        $("#main-1 .directions-text").html("Add caption &amp; click Save.");
+        $('.done-btn').hide();
+        $('.save-btn').show();
+        $('.save-btn').on('tap', function() {
+            $(".caption-input").blur();
+        });
+
+        setTimeout(function() {captionInputFocus=true}, 1000);
+    });
+
+    $(".caption-input").blur( function() {
+        captionInputFocus = false;
+        $("#main-img-1").show();
+        $(".img-actions").show();
+        $(this).parent().css("height", "30px");
+        $(this).css("width", "220px");
+        $(this).css("max-height", "25px");
+        $("#main-1 .directions-text").html("Add up to 5 photos &amp; click Done.");
+        $('.save-btn').hide();
+        $('.done-btn').show();
+
+        photos[parseInt($(this).data("index"), 10) - 1].caption = $(this).val();
+    });
+
+    // TODO Why does this not work properly - focus and then blurs for some reason?
+    // $('.edit-img-btn').on("tap", function(event){
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     $(".caption-input").focus();
+    // });
+
+    $(window).on("resize", function() {
+        if (captionInputFocus) {
+            $(".caption-input").blur();
+        }
+    });
 }
 
 function validateName(name) { 
@@ -432,9 +434,9 @@ function displayPreview() {
             var html = '';
 
             if (i === 0) {
-                html += '<div class="photo full"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p></p></div>';
+                html += '<div class="photo full"><img src="' + photos[i].photo + '" alt="" border="0" height="100%"></img><p>' + photos[i].caption + '</p></div>';
             } else {
-                html += '<div class="photo"><img src="' + photos[i] + '" alt="" border="0" height="100%"></img><p></p></div>';
+                html += '<div class="photo"><img src="' + photos[i].photo + '" alt="" border="0" height="100%"></img><p>' + photos[i].caption + '</p></div>';
             }
 
             $('.preview-photos').append(html);
