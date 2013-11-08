@@ -1,7 +1,6 @@
 
-var photos = [];
-// init array to have 5 elements by specifying last element (ie 4) as undefined
-photos[4] = undefined;
+// init array to have 5 elements (hackish I know)
+var photos = [undefined, undefined, undefined, undefined, undefined];
 
 // var photos = [
 //     {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
