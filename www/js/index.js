@@ -8,13 +8,14 @@ var photos = [
     {photo:undefined, caption:''}
 ];
 
-// var photos = [
-//     {photo:'https://dl.dropboxusercontent.com/u/21463137/luca.png', caption:''},
-//     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
-//     {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
-//     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
-//     {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''}
-// ];
+var local = true;
+var testPhotos = [
+    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
+    {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
+    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
+    {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''}
+];
 
 var contacts = [];
 
@@ -147,7 +148,7 @@ var replaceMainImage = function(src) {
 };
 
 var makeThumbnailActive = function(imgIndex) {
-    var image = document.getElementById('main-img-thumb-' + imgIndex);
+    var img = document.getElementById('main-img-thumb-' + imgIndex);
     $(img).parent().addClass("active").siblings().removeClass('active');
     replaceMainImage($(img).attr('src'));
     $(".caption-input").data("index", imgIndex);
@@ -188,13 +189,16 @@ function initCameraFromMain() {
         console.log('Failed to get an image');
     };
 
-
     $('.btn-camera').each(function() {
         var imgIndex = $(this).data("img-index");
         $(this).bind('tap', function() {
+            if (local) {
+                onSuccess(testPhotos[imgIndex - 1].photo, imgIndex);
+                return;
+            }
             navigator.camera.getPicture(
                 function(uri) {
-                    onSuccess(uri, imgIndex)
+                    onSuccess(uri, imgIndex);
                 },
                 onFail,
                 {
