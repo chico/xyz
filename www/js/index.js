@@ -182,7 +182,19 @@ function initMainPageImage(uri, imgIndex) {
 function initCameraFromMain() {
 
     var onSuccess = function(uri, imgIndex) {
-        initMainPageImage(uri, imgIndex);        
+        initMainPageImage(uri, imgIndex);
+
+        if (!local) {
+            // consider a more reliable way to generate unique ids
+            var fileName = "" + (new Date()).getTime() + ".jpg";
+            s3Uploader.upload(uri, fileName)
+                .done(function () {
+                    alert("S3 upload succeeded - " + fileName);
+                })
+                .fail(function () {
+                    alert("S3 upload failed");
+                });
+        }
     };
 
     var onFail = function() {
