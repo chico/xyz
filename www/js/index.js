@@ -185,6 +185,7 @@ function initCameraFromMain() {
         initMainPageImage(uri, imgIndex);
 
         if (!local) {
+            alert('doing upload');
             // consider a more reliable way to generate unique ids
             var fileName = "" + (new Date()).getTime() + ".jpg";
             s3Uploader.upload(uri, fileName)
@@ -194,6 +195,7 @@ function initCameraFromMain() {
                 .fail(function () {
                     alert("S3 upload failed");
                 });
+            alert('done upload');
         }
     };
 
