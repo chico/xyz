@@ -184,10 +184,11 @@ function initCameraFromMain() {
     var onSuccess = function(uri, imgIndex) {
         initMainPageImage(uri, imgIndex);
 
-        if (!local) {
+        // if (!local) {
             alert('doing upload');
             // consider a more reliable way to generate unique ids
             var fileName = "" + (new Date()).getTime() + ".jpg";
+            alert('uri: ' + uri + ', filename: ' + fileName);
             s3Uploader.upload(uri, fileName)
                 .done(function () {
                     alert("S3 upload succeeded - " + fileName);
@@ -196,7 +197,7 @@ function initCameraFromMain() {
                     alert("S3 upload failed");
                 });
             alert('done upload');
-        }
+        // }
     };
 
     var onFail = function() {

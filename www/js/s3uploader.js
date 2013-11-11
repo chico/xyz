@@ -7,6 +7,8 @@ var s3Uploader = (function () {
         acl = "public-read";
  
     function upload(imageURI, fileName) {
+
+        alert('upload uri: ' + imageURI + ', filename: ' + fileName);
  
         var deferred = $.Deferred(),
             ft = new FileTransfer(),
@@ -25,6 +27,8 @@ var s3Uploader = (function () {
             "Content-Type": "image/jpeg"
         };
  
+        alert('doing upload');
+
         ft.upload(imageURI, s3URI,
             function (e) {
                 deferred.resolve(e);
@@ -33,6 +37,7 @@ var s3Uploader = (function () {
                 deferred.reject(e);
             }, options);
  
+        alert('returning promise');
         return deferred.promise();
  
     }
