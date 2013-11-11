@@ -33,7 +33,7 @@ var s3Uploader = (function () {
             },
             function (e) {
                 deferred.reject(e);
-            }, options, true);
+            }, options);
  
         return deferred.promise();
  
