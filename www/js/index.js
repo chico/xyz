@@ -193,6 +193,13 @@ function initCameraFromMain() {
                 })
                 .fail(function (e) {
                     alert("S3 upload failed - " + e.code);
+                    if (e.code == FileTransferError.FILE_NOT_FOUND_ERR) {
+                        alert("FILE_NOT_FOUND_ERR");
+                    } else if (e.code == FileTransferError.INVALID_URL_ERR) {
+                        alert("INVALID_URL_ERR");
+                    } else if (e.code == FileTransferError.CONNECTION_ERR) {
+                        alert("CONNECTION_ERR");
+                    }
                 });
         }
     };
