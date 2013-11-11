@@ -192,7 +192,7 @@ function initCameraFromMain() {
                     alert("S3 upload succeeded - " + fileName);
                 })
                 .fail(function (e) {
-                    alert("S3 upload failed - " + e);
+                    alert("S3 upload failed - " + e.code);
                 });
         }
     };
@@ -206,19 +206,19 @@ function initCameraFromMain() {
         $(this).bind('tap', function() {
             if (local) {
                 onSuccess(testPhotos[imgIndex - 1].photo, imgIndex);
-                return;
+            } else {
+                navigator.camera.getPicture(
+                    function(uri) {
+                        onSuccess(uri, imgIndex);
+                    },
+                    onFail,
+                    {
+                        quality: 50,
+                        destinationType: navigator.camera.DestinationType.FILE_URI,
+                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+                    }
+                );
             }
-            navigator.camera.getPicture(
-                function(uri) {
-                    onSuccess(uri, imgIndex);
-                },
-                onFail,
-                {
-                    quality: 50,
-                    destinationType: navigator.camera.DestinationType.FILE_URI,
-                    sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-                }
-            );
         });
     });
 
