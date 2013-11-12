@@ -179,29 +179,27 @@ function initMainPageImage(uri, imgIndex) {
     });
 }
 
+function upload(uri) {
+    // TODO consider a more reliable way to generate unique ids
+    var fileName = "" + (new Date()).getTime() + ".jpg";
+
+    s3Uploader.upload(uri, fileName)
+        .done(function () {
+            console.log("S3 upload succeeded - " + fileName);
+        })
+        .fail(function (e) {
+            alert("S3 upload failed - " + e.code);
+        });
+}
+
 function initCameraFromMain() {
 
     var onSuccess = function(uri, imgIndex) {
         initMainPageImage(uri, imgIndex);
 
-        if (!local) {
-            // consider a more reliable way to generate unique ids
-            var fileName = "" + (new Date()).getTime() + ".jpg";
-            s3Uploader.upload(uri, fileName)
-                .done(function () {
-                    alert("S3 upload succeeded - " + fileName);
-                })
-                .fail(function (e) {
-                    alert("S3 upload failed - " + e.code);
-                    if (e.code == FileTransferError.FILE_NOT_FOUND_ERR) {
-                        alert("FILE_NOT_FOUND_ERR - " + e.source);
-                    } else if (e.code == FileTransferError.INVALID_URL_ERR) {
-                        alert("INVALID_URL_ERR");
-                    } else if (e.code == FileTransferError.CONNECTION_ERR) {
-                        alert("CONNECTION_ERR");
-                    }
-                });
-        }
+        // if (!local) {
+        //     upload(uri);
+        // }
     };
 
     var onFail = function() {
