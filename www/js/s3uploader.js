@@ -8,7 +8,9 @@ var s3Uploader = (function () {
  
     function upload(imageURI, fileName) {
 
-        alert('uploading: ' + imageURI + ', filename: ' + fileName);
+        imageURI = imageURI.substring("file://".length, imageURI.length);
+
+        alert('uploading file: ' + imageURI + ', filename: ' + fileName);
  
         var deferred = $.Deferred(),
             ft = new FileTransfer(),
