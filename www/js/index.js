@@ -185,37 +185,27 @@ function initCameraFromMain() {
         initMainPageImage(uri, imgIndex);
 
         if (!local) {
-            alert('resolve: ' + uri);
-            window.resolveLocalFileSystemURI(uri, onResolveSuccess, onResolveFail);
+            // consider a more reliable way to generate unique ids
+            var fileName = "" + (new Date()).getTime() + ".jpg";
+            s3Uploader.upload(uri, fileName)
+                .done(function () {
+                    alert("S3 upload succeeded - " + fileName);
+                })
+                .fail(function (e) {
+                    alert("S3 upload failed - " + e.code);
+                    if (e.code == FileTransferError.FILE_NOT_FOUND_ERR) {
+                        alert("FILE_NOT_FOUND_ERR - " + e.source);
+                    } else if (e.code == FileTransferError.INVALID_URL_ERR) {
+                        alert("INVALID_URL_ERR");
+                    } else if (e.code == FileTransferError.CONNECTION_ERR) {
+                        alert("CONNECTION_ERR");
+                    }
+                });
         }
     };
 
     var onFail = function() {
         console.log('Failed to get an image');
-    };
-
-    var onResolveSuccess = function(fileEntry) {
-        alert('on resolve: ' + fileEntry.fullPath);
-        // consider a more reliable way to generate unique ids
-        var fileName = "" + (new Date()).getTime() + ".jpg";
-        s3Uploader.upload(fileEntry.fullPath, fileName)
-            .done(function () {
-                alert("S3 upload succeeded - " + fileName);
-            })
-            .fail(function (e) {
-                alert("S3 upload failed - " + e.code);
-                if (e.code == FileTransferError.FILE_NOT_FOUND_ERR) {
-                    alert("FILE_NOT_FOUND_ERR - " + e.source);
-                } else if (e.code == FileTransferError.INVALID_URL_ERR) {
-                    alert("INVALID_URL_ERR");
-                } else if (e.code == FileTransferError.CONNECTION_ERR) {
-                    alert("CONNECTION_ERR");
-                }
-            });
-    };
-
-    var onResolveFail = function() {
-        console.log('Failed to resolve image uri');
     };
 
     $('.btn-camera').each(function() {
