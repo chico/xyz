@@ -185,6 +185,7 @@ function initCameraFromMain() {
         initMainPageImage(uri, imgIndex);
 
         if (!local) {
+            alert('resolve: ' + uri);
             window.resolveLocalFileSystemURI(uri, onResolveSuccess, onResolveFail);
         }
     };
@@ -194,6 +195,7 @@ function initCameraFromMain() {
     };
 
     var onResolveSuccess = function(fileEntry) {
+        alert('on resolve: ' + fileEntry.fullPath);
         // consider a more reliable way to generate unique ids
         var fileName = "" + (new Date()).getTime() + ".jpg";
         s3Uploader.upload(fileEntry.fullPath, fileName)
