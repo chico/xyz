@@ -513,7 +513,7 @@ function uploadPhotosToS3() {
         alert("Upload in progress");
         return false;
     }
-    alert("upload ready to go");    
+    alert("upload ready to go");
     uploadInProgress = true;
     uploading = [];
     try {
@@ -527,14 +527,15 @@ function uploadPhotosToS3() {
 
         var interval = setInterval(function() {
             if (uploading.length >= photoCount) {
-                clearInterval(interval);                
+                clearInterval(interval);
                 uploadInProgress = false;
                 alert("upload done");
             }
+            clearInterval(interval);
         }, 100);
 
     } catch(err) {
-        alert("Whoops, upload failed.");
+        alert("Whoops, upload failed - " + err.message);
         uploadInProgress = false;
     }
     
