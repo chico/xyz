@@ -531,7 +531,6 @@ function uploadPhotosToS3() {
                 uploadInProgress = false;
                 alert("upload done");
             }
-            clearInterval(interval);
         }, 100);
 
     } catch(err) {
