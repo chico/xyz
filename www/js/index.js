@@ -1,5 +1,5 @@
 
-var local = true;
+var local = false;
 
 // init array to have 5 elements (hackish I know)
 var photos = [
