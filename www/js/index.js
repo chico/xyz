@@ -1,4 +1,6 @@
 
+var local = true;
+
 // init array to have 5 elements (hackish I know)
 var photos = [
     {photo:undefined, caption:''},
@@ -8,7 +10,6 @@ var photos = [
     {photo:undefined, caption:''}
 ];
 
-var local = false;
 var testPhotos = [
     {photo:'http://farm4.staticflickr.com/3767/9056854173_28bbd5c2cb_n.jpg', caption:''},
     {photo:'http://farm3.staticflickr.com/2835/8926405863_8b4afb79b9_m.jpg', caption:''},
@@ -481,10 +482,10 @@ function displayContacts() {
 }
 
 function displayPreview() {
-    $('#btn-send').on('tap', function(event) {
+    $('#btn-preview-send').on('tap', function(event) {
         event.stopPropagation();
         event.preventDefault();
-        send();
+        uploadPhotosToS3();
     });
 
     for(var i=0; i < photos.length; i++) {
@@ -503,12 +504,16 @@ function displayPreview() {
     }
 }
 
-function send() {
+function uploadPhotosToS3() {
+    if (local) {
+        console.log("Local mode, doing nothing");
+        return false;
+    }
     if (uploadInProgress) {
         alert("Upload in progress");
         return false;
     }
-    alert("upload ready to go");
+    alert("upload ready to go");    
     uploadInProgress = true;
     uploading = [];
     try {
@@ -520,11 +525,11 @@ function send() {
             }
         }
 
-        setInterval(function() {
+        var interval = setInterval(function() {
             if (uploading.length >= photoCount) {
-                alert("upload done");
+                clearInterval(interval);                
                 uploadInProgress = false;
-                break;
+                alert("upload done");
             }
         }, 100);
 
