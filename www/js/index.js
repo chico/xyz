@@ -185,7 +185,7 @@ function initMainPageImage(uri, imgIndex) {
 
 function upload(uri) {
     // TODO consider a more reliable way to generate unique ids
-    var fileName = "" + (new Date()).getTime() + ".jpg";
+    var filename = "" + (new Date()).getTime() + ".jpg";
 
     s3Uploader.upload(uri, filename)
         .done(function () {
