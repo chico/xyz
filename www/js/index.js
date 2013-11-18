@@ -26,6 +26,9 @@ var captionInputFocus = false;
 
 var showPhotosInMainPage = false;
 
+var uploadInProgress = false;
+var uploading = [];
+
 $('#mainPage').live('pageshow', function(event) {
     if (showPhotosInMainPage) {
         for(var i=0; i < photos.length; i++) {
@@ -183,12 +186,14 @@ function upload(uri) {
     // TODO consider a more reliable way to generate unique ids
     var fileName = "" + (new Date()).getTime() + ".jpg";
 
-    s3Uploader.upload(uri, fileName)
+    s3Uploader.upload(uri, filename)
         .done(function () {
-            console.log("S3 upload succeeded - " + fileName);
+            console.log("S3 upload succeeded - " + filename);
+            uploading.push({uri: uri, filename: filename});
         })
         .fail(function (e) {
-            alert("S3 upload failed - " + e.code);
+            // alert("S3 upload failed - " + e.code);
+            alert("Sorry, upload failed :/");
         });
 }
 
@@ -476,6 +481,12 @@ function displayContacts() {
 }
 
 function displayPreview() {
+    $('#btn-send').on('tap', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        send();
+    });
+
     for(var i=0; i < photos.length; i++) {
         if (photos[i] && photos[i].photo) {
 
@@ -490,6 +501,38 @@ function displayPreview() {
             $('.preview-photos').append(html);
         }
     }
+}
+
+function send() {
+    if (uploadInProgress) {
+        alert("Upload in progress");
+        return false;
+    }
+    alert("upload ready to go");
+    uploadInProgress = true;
+    uploading = [];
+    try {
+        var photoCount = 0;
+        for(var i=0; i < photos.length; i++) {
+            if (photos[i] && photos[i].photo) {
+                photoCount += 1;
+                upload(photos[i].photo);
+            }
+        }
+
+        setInterval(function() {
+            if (uploading.length >= photoCount) {
+                alert("upload done");
+                uploadInProgress = false;
+                break;
+            }
+        }, 100);
+
+    } catch(err) {
+        alert("Whoops, upload failed.");
+        uploadInProgress = false;
+    }
+    
 }
 
 
